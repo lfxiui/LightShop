@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by AgZou on 2017/5/1.
+ * Created by AgZou on 2017/5/2.
  */
 @Entity
 public class Light {
@@ -18,13 +18,15 @@ public class Light {
     private Integer price;
     private Integer quantity;
     private String description;
-    private String images;
+    private String image1;
+    private String image2;
+    private String image3;
     private Collection<Comments> commentsByLightId;
     private Catagory catagoryByCatagoryId;
     private Brand brandByBrandId;
     private Stryle stryleByStyleId;
     private Collection<Myshopcart> myshopcartsByLightId;
-    private Collection<Orders> ordersByLightId;
+    private Collection<Orderlight> orderlightsByLightId;
     private Collection<Wishlist> wishlistsByLightId;
 
     @Id
@@ -128,13 +130,33 @@ public class Light {
     }
 
     @Basic
-    @Column(name = "Images", nullable = true, length = 50)
-    public String getImages() {
-        return images;
+    @Column(name = "Image1", nullable = true, length = 50)
+    public String getImage1() {
+        return image1;
     }
 
-    public void setImages(String images) {
-        this.images = images;
+    public void setImage1(String image1) {
+        this.image1 = image1;
+    }
+
+    @Basic
+    @Column(name = "Image2", nullable = true, length = 50)
+    public String getImage2() {
+        return image2;
+    }
+
+    public void setImage2(String image2) {
+        this.image2 = image2;
+    }
+
+    @Basic
+    @Column(name = "Image3", nullable = true, length = 50)
+    public String getImage3() {
+        return image3;
+    }
+
+    public void setImage3(String image3) {
+        this.image3 = image3;
     }
 
     @Override
@@ -154,7 +176,9 @@ public class Light {
         if (price != null ? !price.equals(light.price) : light.price != null) return false;
         if (quantity != null ? !quantity.equals(light.quantity) : light.quantity != null) return false;
         if (description != null ? !description.equals(light.description) : light.description != null) return false;
-        if (images != null ? !images.equals(light.images) : light.images != null) return false;
+        if (image1 != null ? !image1.equals(light.image1) : light.image1 != null) return false;
+        if (image2 != null ? !image2.equals(light.image2) : light.image2 != null) return false;
+        if (image3 != null ? !image3.equals(light.image3) : light.image3 != null) return false;
 
         return true;
     }
@@ -171,7 +195,9 @@ public class Light {
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (images != null ? images.hashCode() : 0);
+        result = 31 * result + (image1 != null ? image1.hashCode() : 0);
+        result = 31 * result + (image2 != null ? image2.hashCode() : 0);
+        result = 31 * result + (image3 != null ? image3.hashCode() : 0);
         return result;
     }
 
@@ -185,7 +211,7 @@ public class Light {
     }
 
     @ManyToOne
-    @JoinColumn(name = "CatagoryId", referencedColumnName = "CatagoryId", nullable = false)
+    @JoinColumn(name = "CatagoryId", referencedColumnName = "CatagoryId", nullable = false,insertable = false,updatable = false)
     public Catagory getCatagoryByCatagoryId() {
         return catagoryByCatagoryId;
     }
@@ -195,7 +221,7 @@ public class Light {
     }
 
     @ManyToOne
-    @JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false)
+    @JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false,insertable = false,updatable = false)
     public Brand getBrandByBrandId() {
         return brandByBrandId;
     }
@@ -205,7 +231,7 @@ public class Light {
     }
 
     @ManyToOne
-    @JoinColumn(name = "StyleId", referencedColumnName = "StyleId", nullable = false)
+    @JoinColumn(name = "StyleId", referencedColumnName = "StyleId", nullable = false,insertable = false,updatable = false)
     public Stryle getStryleByStyleId() {
         return stryleByStyleId;
     }
@@ -224,12 +250,12 @@ public class Light {
     }
 
     @OneToMany(mappedBy = "lightByLightId")
-    public Collection<Orders> getOrdersByLightId() {
-        return ordersByLightId;
+    public Collection<Orderlight> getOrderlightsByLightId() {
+        return orderlightsByLightId;
     }
 
-    public void setOrdersByLightId(Collection<Orders> ordersByLightId) {
-        this.ordersByLightId = ordersByLightId;
+    public void setOrderlightsByLightId(Collection<Orderlight> orderlightsByLightId) {
+        this.orderlightsByLightId = orderlightsByLightId;
     }
 
     @OneToMany(mappedBy = "lightByLightId")

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by AgZou on 2017/5/1.
+ * Created by AgZou on 2017/5/2.
  */
 @Entity
 public class Comments {
@@ -93,7 +93,7 @@ public class Comments {
     }
 
     @ManyToOne
-    @JoinColumn(name = "LightId", referencedColumnName = "LightId", nullable = false)
+    @JoinColumn(name = "LightId", referencedColumnName = "LightId", nullable = false,insertable = false,updatable = false)
     public Light getLightByLightId() {
         return lightByLightId;
     }
@@ -103,7 +103,7 @@ public class Comments {
     }
 
     @ManyToOne
-    @JoinColumn(name = "UserId", referencedColumnName = "UserId", nullable = false)
+    @JoinColumn(name = "UserId", referencedColumnName = "UserId", nullable = false,insertable = false,updatable = false)
     public User getUserByUserId() {
         return userByUserId;
     }

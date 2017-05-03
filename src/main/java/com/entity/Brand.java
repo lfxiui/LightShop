@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by AgZou on 2017/5/1.
+ * Created by AgZou on 2017/5/2.
  */
 @Entity
 public class Brand {

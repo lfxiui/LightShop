@@ -8,11 +8,12 @@
     <context:component-scan base-package="com.dao"/>
     <context:component-scan base-package="com.service"/>
     <aop:aspectj-autoproxy/>
+    <!--连接池配置-->
     <bean id="dataSource"
-          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/shop?serverTimezone=GMT%2b8"/>
-        <property name="username" value="root"/>
+          class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shop?serverTimezone=GMT%2b8&amp;useSSL=false"/>
+        <property name="user" value="root"/>
         <property name="password" value="admin"/>
     </bean>
     <!--Hibernate配置-->
@@ -39,15 +40,11 @@
         </property>
     </bean>
 
-    <bean id="transactionManager"
-          class="org.springframework.orm.hibernate5.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory"/>
-    </bean>
 
-    <!-- 声明式容器事务管理 ,transaction-manager指定事务管理器为transactionManager -->
+    <!-- 声明式容器事务管理 ,transaction-manager指定事务管理器为txManager -->
     <bean id="txManager"
           class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
-    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <tx:annotation-driven transaction-manager="txManager"/>
 </beans>

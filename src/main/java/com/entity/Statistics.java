@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 /**
- * Created by AgZou on 2017/5/1.
+ * Created by AgZou on 2017/5/2.
  */
 @Entity
 public class Statistics {

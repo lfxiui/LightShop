@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by AgZou on 2017/5/1.
+ * Created by AgZou on 2017/5/2.
  */
 @Entity
 public class User {
@@ -49,7 +49,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "Address", length = 50)
+    @Column(name = "Address", nullable = true, length = 50)
     public String getAddress() {
         return address;
     }
@@ -79,7 +79,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "Email", length = 50)
+    @Column(name = "Email", nullable = true, length = 50)
     public String getEmail() {
         return email;
     }
@@ -139,7 +139,7 @@ public class User {
     }
 
     @Basic
-    @Column(name = "LastLoginTime", nullable = false)
+    @Column(name = "LastLoginTime", nullable = true)
     public Timestamp getLastLoginTime() {
         return lastLoginTime;
     }
@@ -217,7 +217,7 @@ public class User {
     }
 
     @ManyToOne
-    @JoinColumn(name = "UserRoleId", referencedColumnName = "Id", nullable = false)
+    @JoinColumn(name = "UserRoleId", referencedColumnName = "Id", nullable = false,insertable = false,updatable = false)
     public Userroles getUserrolesByUserRoleId() {
         return userrolesByUserRoleId;
     }
@@ -227,7 +227,7 @@ public class User {
     }
 
     @ManyToOne
-    @JoinColumn(name = "UserStateId", referencedColumnName = "Id", nullable = false)
+    @JoinColumn(name = "UserStateId", referencedColumnName = "Id", nullable = false,insertable = false,updatable = false)
     public Userstates getUserstatesByUserStateId() {
         return userstatesByUserStateId;
     }

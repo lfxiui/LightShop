@@ -2,15 +2,15 @@ package com.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 /**
- * Created by AgZou on 2017/5/1.
+ * Created by AgZou on 2017/5/2.
  */
 @Entity
 public class Orders {
     private Integer ordersId;
     private Integer userId;
-    private Integer lightId;
     private Integer quantity;
     private Integer totalPrice;
     private Timestamp date;
@@ -24,8 +24,9 @@ public class Orders {
     private String postType;
     private String paymentType;
     private Integer postFee;
+    private Collection<Orderlight> orderlightsByOrdersId;
     private User userByUserId;
-    private Light lightByLightId;
+    private Orderstates orderstatesByOrderStateId;
 
     @Id
     @Column(name = "OrdersId", nullable = false)
@@ -45,16 +46,6 @@ public class Orders {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    @Basic
-    @Column(name = "LightId", nullable = false)
-    public Integer getLightId() {
-        return lightId;
-    }
-
-    public void setLightId(Integer lightId) {
-        this.lightId = lightId;
     }
 
     @Basic
@@ -196,7 +187,6 @@ public class Orders {
 
         if (ordersId != null ? !ordersId.equals(orders.ordersId) : orders.ordersId != null) return false;
         if (userId != null ? !userId.equals(orders.userId) : orders.userId != null) return false;
-        if (lightId != null ? !lightId.equals(orders.lightId) : orders.lightId != null) return false;
         if (quantity != null ? !quantity.equals(orders.quantity) : orders.quantity != null) return false;
         if (totalPrice != null ? !totalPrice.equals(orders.totalPrice) : orders.totalPrice != null) return false;
         if (date != null ? !date.equals(orders.date) : orders.date != null) return false;
@@ -220,7 +210,6 @@ public class Orders {
     public int hashCode() {
         int result = ordersId != null ? ordersId.hashCode() : 0;
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (lightId != null ? lightId.hashCode() : 0);
         result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
         result = 31 * result + (totalPrice != null ? totalPrice.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
@@ -237,8 +226,17 @@ public class Orders {
         return result;
     }
 
+    @OneToMany(mappedBy = "ordersByOrderId")
+    public Collection<Orderlight> getOrderlightsByOrdersId() {
+        return orderlightsByOrdersId;
+    }
+
+    public void setOrderlightsByOrdersId(Collection<Orderlight> orderlightsByOrdersId) {
+        this.orderlightsByOrdersId = orderlightsByOrdersId;
+    }
+
     @ManyToOne
-    @JoinColumn(name = "UserId", referencedColumnName = "UserId", nullable = false)
+    @JoinColumn(name = "UserId", referencedColumnName = "UserId", nullable = false,insertable = false,updatable = false)
     public User getUserByUserId() {
         return userByUserId;
     }
@@ -248,12 +246,12 @@ public class Orders {
     }
 
     @ManyToOne
-    @JoinColumn(name = "LightId", referencedColumnName = "LightId", nullable = false)
-    public Light getLightByLightId() {
-        return lightByLightId;
+    @JoinColumn(name = "OrderStateId", referencedColumnName = "Id", nullable = false,insertable = false,updatable = false)
+    public Orderstates getOrderstatesByOrderStateId() {
+        return orderstatesByOrderStateId;
     }
 
-    public void setLightByLightId(Light lightByLightId) {
-        this.lightByLightId = lightByLightId;
+    public void setOrderstatesByOrderStateId(Orderstates orderstatesByOrderStateId) {
+        this.orderstatesByOrderStateId = orderstatesByOrderStateId;
     }
 }
