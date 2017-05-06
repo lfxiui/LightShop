@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by AgZou on 2017/5/2.
+ * Created by AgZou on 2017/5/4.
  */
 @Entity
 public class Comments {

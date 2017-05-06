@@ -107,6 +107,11 @@
             <artifactId>spring-context</artifactId>
             <version>4.3.6.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>LightShop</finalName>

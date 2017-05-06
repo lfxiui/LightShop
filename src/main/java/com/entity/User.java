@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by AgZou on 2017/5/2.
+ * Created by AgZou on 2017/5/4.
  */
 @Entity
 public class User {

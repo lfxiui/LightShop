@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -37,15 +38,15 @@
     <!-- 轮播（Carousel）项目 -->
     <div class="carousel-inner"  role="listbox">
         <div class="item active">
-            <img src="${pageContext.request.contextPath}/images/bnr.jpg" alt="First slide" height="100%" width="100%">
+            <img src="${pageContext.request.contextPath}/${page.carouselImg1}" alt="First slide" height="100%" width="100%">
             <div class="carousel-caption">标题 1</div>
         </div>
         <div class="item">
-            <img src="${pageContext.request.contextPath}/images/bnr2.jpg" alt="Second slide" height="100%" width="100%">
+            <img src="${pageContext.request.contextPath}/${page.carouselImg2}" alt="Second slide" height="100%" width="100%">
             <div class="carousel-caption">标题 2</div>
         </div>
         <div class="item">
-            <img src="${pageContext.request.contextPath}/images/bnr3.jpg" alt="Third slide" height="100%" width="100%">
+            <img src="${pageContext.request.contextPath}/${page.carouselImg3}" alt="Third slide" height="100%" width="100%">
             <div class="carousel-caption">标题 3</div>
         </div>
     </div>
@@ -64,118 +65,22 @@
     <h3>热&nbsp;销</h3>
 <div class="container">
     <div class="items-sec">
-        <div class="col-md-3 feature-grid">
-            <a href="#">
-            <img src="${pageContext.request.contextPath}/images/img1.jpg" alt="">
-            <div class="arrival-info">
-                <h4>Lighting #1</h4>
-                <p>Rs 12000</p>
-                <span class="item_price"></span>
-                <span class="disc">[12% off]</span>
+        <c:forEach items="${lights}" var="light">
+            <div class="col-md-3 feature-grid">
+                <a href="#">
+                    <img src="${pageContext.request.contextPath}/${light.image1}" alt="">
+                    <div class="arrival-info">
+                        <h4>${light.name}</h4>
+                        <p>Rs ${light.price}</p>
+                        <span class="item_price"></span>
+                        <span class="disc">[12% off]</span>
+                    </div>
+                    <div class="viw">
+                        <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">view</span></a>
+                    </div>
+                </a>
             </div>
-            <div class="viw">
-                <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">view</span></a>
-            </div>
-            </a>
-        </div>
-        <div class="col-md-3 feature-grid">
-            <a href="#">
-            <img src="${pageContext.request.contextPath}/images/img1.jpg" alt="">
-            <div class="arrival-info">
-                <h4>Lighting #1</h4>
-                <p>Rs 12000</p>
-                <span class="item_price"></span>
-                <span class="disc">[12% off]</span>
-            </div>
-            <div class="viw">
-                <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">view</span></a>
-            </div>
-        </a>
-        </div>
-        <div class="col-md-3 feature-grid">
-            <a href="#">
-            <img src="${pageContext.request.contextPath}/images/img1.jpg" alt="">
-            <div class="arrival-info">
-                <h4>Lighting #1</h4>
-                <p>Rs 12000</p>
-                <span class="item_price"></span>
-                <span class="disc">[12% off]</span>
-            </div>
-            <div class="viw">
-                <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">view</span></a>
-            </div>
-        </a>
-        </div>
-        <div class="col-md-3 feature-grid">
-            <a href="#">
-            <img src="${pageContext.request.contextPath}/images/img1.jpg" alt="">
-            <div class="arrival-info">
-                <h4>Lighting #1</h4>
-                <p>Rs 12000</p>
-                <span class="item_price"></span>
-                <span class="disc">[12% off]</span>
-            </div>
-            <div class="viw">
-                <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">view</span></a>
-            </div>
-        </a>
-        </div>
-        <div class="col-md-3 feature-grid">
-            <a href="#">
-                <img src="${pageContext.request.contextPath}/images/img1.jpg" alt="">
-                <div class="arrival-info">
-                    <h4>Lighting #1</h4>
-                    <p>Rs 12000</p>
-                    <span class="item_price"></span>
-                    <span class="disc">[12% off]</span>
-                </div>
-                <div class="viw">
-                    <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">view</span></a>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3 feature-grid">
-            <a href="#">
-                <img src="${pageContext.request.contextPath}/images/img1.jpg" alt="">
-                <div class="arrival-info">
-                    <h4>Lighting #1</h4>
-                    <p>Rs 12000</p>
-                    <span class="item_price"></span>
-                    <span class="disc">[12% off]</span>
-                </div>
-                <div class="viw">
-                    <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">view</span></a>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3 feature-grid">
-            <a href="#">
-                <img src="${pageContext.request.contextPath}/images/img1.jpg" alt="">
-                <div class="arrival-info">
-                    <h4>Lighting #1</h4>
-                    <p>Rs 12000</p>
-                    <span class="item_price"></span>
-                    <span class="disc">[12% off]</span>
-                </div>
-                <div class="viw">
-                    <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">view</span></a>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-3 feature-grid">
-            <a href="#">
-                <img src="${pageContext.request.contextPath}/images/img1.jpg" alt="">
-                <div class="arrival-info">
-                    <h4>Lighting #1</h4>
-                    <p>Rs 12000</p>
-                    <span class="item_price"></span>
-                    <span class="disc">[12% off]</span>
-                </div>
-                <div class="viw">
-                    <a href="#"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">view</span></a>
-                </div>
-            </a>
-        </div>
+        </c:forEach>
         <div class="clearfix"></div>
     </div>
 </div>
@@ -183,7 +88,7 @@
 <%--清仓--%>
 <div class="offers">
     <div class="container">
-        <h3>清&nbsp;&nbsp;仓</h3>
+        <h3>清&nbsp;仓</h3>
         <div class="offer-grids">
             <div class="col-md-6 grid-left">
                 <a href="#">

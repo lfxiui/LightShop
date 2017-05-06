@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by AgZou on 2017/5/2.
+ * Created by AgZou on 2017/5/4.
  */
 @Entity
 public class Light {
@@ -21,6 +21,7 @@ public class Light {
     private String image1;
     private String image2;
     private String image3;
+    private String name;
     private Collection<Comments> commentsByLightId;
     private Catagory catagoryByCatagoryId;
     private Brand brandByBrandId;
@@ -159,6 +160,16 @@ public class Light {
         this.image3 = image3;
     }
 
+    @Basic
+    @Column(name = "Name", nullable = true, length = 20)
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -179,6 +190,7 @@ public class Light {
         if (image1 != null ? !image1.equals(light.image1) : light.image1 != null) return false;
         if (image2 != null ? !image2.equals(light.image2) : light.image2 != null) return false;
         if (image3 != null ? !image3.equals(light.image3) : light.image3 != null) return false;
+        if (name != null ? !name.equals(light.name) : light.name != null) return false;
 
         return true;
     }
@@ -198,6 +210,7 @@ public class Light {
         result = 31 * result + (image1 != null ? image1.hashCode() : 0);
         result = 31 * result + (image2 != null ? image2.hashCode() : 0);
         result = 31 * result + (image3 != null ? image3.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 
@@ -211,7 +224,7 @@ public class Light {
     }
 
     @ManyToOne
-    @JoinColumn(name = "CatagoryId", referencedColumnName = "CatagoryId", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "CatagoryId", referencedColumnName = "CatagoryId", nullable = false, insertable = false, updatable = false)
     public Catagory getCatagoryByCatagoryId() {
         return catagoryByCatagoryId;
     }
@@ -221,7 +234,7 @@ public class Light {
     }
 
     @ManyToOne
-    @JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false, insertable = false, updatable = false)
     public Brand getBrandByBrandId() {
         return brandByBrandId;
     }
@@ -231,7 +244,7 @@ public class Light {
     }
 
     @ManyToOne
-    @JoinColumn(name = "StyleId", referencedColumnName = "StyleId", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "StyleId", referencedColumnName = "StyleId", nullable = false, insertable = false, updatable = false)
     public Stryle getStryleByStyleId() {
         return stryleByStyleId;
     }
@@ -266,4 +279,5 @@ public class Light {
     public void setWishlistsByLightId(Collection<Wishlist> wishlistsByLightId) {
         this.wishlistsByLightId = wishlistsByLightId;
     }
+
 }
