@@ -63,7 +63,7 @@
             <!-- //zooming-effect -->
         </div>
         <div class="col-md-8 single-right">
-            <h3>小仙女闪闪发亮灯饰</h3>
+            <h3>${light.name}</h3>
             <!--<span>${light.brandByBrandId.brandName}</span><span>${light.stryleByStyleId.styleName}</span><span>${light.catagoryByCatagoryId.catagoryName}</span> -->
             <div class="description">
                 <h5>材质：</h5>
@@ -84,7 +84,7 @@
                     <div class="quantity">
                         <div class="quantity-select">
                             <div class="entry value-minus1">&nbsp;</div>
-                            <input type="text" id="quantity" name="quantity" size=2 value=1 />
+                            <input type="text" id="quantity" name="quantity" size=2 value=1 style="height: 40px"/>
                             <div class="entry value-plus1 active">&nbsp;</div>
                             <small style="color: #098dff;">(库存：${light.quantity})</small>
                         </div>
@@ -127,8 +127,8 @@
                     <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>买家评价</span></li>
                 </ul>
                 <div class="tab-1 resp-tab-content additional_info_grid" aria-labelledby="tab_item-0">
-                    <h3>小仙女闪闪发亮灯饰</h3>
-                    <p>${light.description}</p>
+                    <h3>${light.name}</h3>
+                    <p class="lead">${light.description}</p>
                 </div>
 
                 <div class="tab-2 resp-tab-content additional_info_grid" aria-labelledby="tab_item-1">
@@ -158,8 +158,8 @@
                 </div>
             </div>
         </div>
-        <script src="${pageContext.servletContext.contextPath}/js/easyResponsiveTabs.js" type="text/javascript"></script>
-        <script type="text/javascript">
+        <script src="${pageContext.servletContext.contextPath}/js/easyResponsiveTabs.js" ></script>
+        <script>
             $(document).ready(function () {
                 $('#horizontalTab1').easyResponsiveTabs({
                     type: 'default', //Types: default, vertical, accordion
