@@ -12,18 +12,18 @@
     <title></title>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed navbar-transparent dark bootsnav">
+<nav class="navbar navbar-default  bootsnav">
 
     <!-- Start Top Search -->
-    <div class="top-search">
-        <div class="container">
-            <form class="input-group">
-                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                <input type="text" class="form-control" placeholder="Search">
-                <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-            </form>
+        <div class="top-search">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
         </div>
-    </div>
     <!-- End Top Search -->
 
     <div class="container">

@@ -1,7 +1,6 @@
 package com.controller;
 
 import com.service.PageService;
-import org.ehcache.core.spi.time.SystemTimeSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,7 +25,6 @@ public class PageController {
         mv.addObject("page", pageService.getPage());
         mv.addObject("lights",pageService.getPageHotSales());
 //        mv.addObject("elights",pageService.getPageEndSales());
-        System.out.println(pageService.getPageHotSales().get(0).getPrice());
         return mv;
     }
 }
