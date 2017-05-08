@@ -11,39 +11,37 @@
     <meta name="keywords" content="" />
     <!-- 商品详情 -->
     <!-- Custom Theme files -->
-    <link href="${pageContext.servletContext.contextPath}/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="${pageContext.servletContext.contextPath}/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="${pageContext.servletContext.contextPath}/css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
-    <!-- //Custom Theme files -->
-    <!-- font-awesome icons -->
-    <link href="${pageContext.servletContext.contextPath}/css/font-awesome.css" rel="stylesheet">
-    <!-- //font-awesome icons -->
+    <link href="${pageContext.servletContext.contextPath}/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="${pageContext.servletContext.contextPath}/css/style.css" rel="stylesheet" />
+    <link href="${pageContext.request.contextPath}/skins/color.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootsnav.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/overwrite.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/style1.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/fonts/FontAwesome/font-awesome.css" rel="stylesheet">
     <!-- js -->
-    <script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-1.11.0.min.js"></script>
+    <script  src="${pageContext.servletContext.contextPath}/js/bootstrap-3.1.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootsnav.js"></script>
     <!-- //js -->
-    <!-- web fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-    <!-- //web fonts -->
     <!-- for bootstrap working -->
-    <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/bootstrap-3.1.1.min.js"></script>
     <!-- //for bootstrap working -->
 </head>
 <body>
 <!-- single -->
+<jsp:include page="navigation.jsp"/>
 <div class="single">
     <div class="container">
         <div class="col-md-4 single-left">
             <div class="flexslider">
                 <ul class="slides">
-                    <li data-thumb="${pageContext.servletContext.contextPath}/images/${light.image1}">
-                        <div class="thumb-image"> <img src="${pageContext.servletContext.contextPath}/images/${light.image1}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                    <li data-thumb="${pageContext.request.contextPath}/${light.image1}">
+                        <div class="thumb-image"> <img src="${pageContext.request.contextPath}/${light.image1}" data-imagezoom="true" class="img-responsive" alt=""> </div>
                     </li>
-                    <li data-thumb="${pageContext.servletContext.contextPath}/images/${light.image2}">
-                        <div class="thumb-image"> <img src="${pageContext.servletContext.contextPath}/images/${light.image2}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                    <li data-thumb="${pageContext.request.contextPath}/${light.image2}">
+                        <div class="thumb-image"> <img src="${pageContext.request.contextPath}/${light.image2}" data-imagezoom="true" class="img-responsive" alt=""> </div>
                     </li>
-                    <li data-thumb="${pageContext.servletContext.contextPath}/images/${light.image3}">
-                        <div class="thumb-image"> <img src="${pageContext.servletContext.contextPath}/images/${light.image3}" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                    <li data-thumb="${pageContext.request.contextPath}/${light.image3}">
+                        <div class="thumb-image"> <img src="${pageContext.request.contextPath}/${light.image3}" data-imagezoom="true" class="img-responsive" alt=""> </div>
                     </li>
                 </ul>
             </div>

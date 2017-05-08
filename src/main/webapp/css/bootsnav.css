@@ -54,7 +54,6 @@ nav.navbar.bootsnav{
 nav.navbar.bootsnav ul.nav > li > a{
     color: #6f6f6f;
     background-color: transparent !important;
-    font-size: medium;
 }
 
 nav.navbar.bootsnav ul.nav li.megamenu-fw > a:hover,
@@ -1277,7 +1276,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     /* Tabs
     =================================*/ 
     nav.navbar.bootsnav .megamenu-content.tabbed{
-        padding-left: 0 !mportant;
+        padding-left: 0 !important;
     }
     
     nav.navbar.bootsnav .tabbed > li{

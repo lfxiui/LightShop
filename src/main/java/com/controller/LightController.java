@@ -38,6 +38,7 @@ public class LightController {
         Light light = lightService.getLightById(lightId);
         model.addAttribute("light",light);
         model.addAttribute("comments",light.getCommentsByLightId());
+        System.out.println(light.getImage1());
         return "light";
     }
 
