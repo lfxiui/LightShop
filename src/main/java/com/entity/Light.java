@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by AgZou on 2017/5/4.
+ * Created by AgZou on 2017/5/9.
  */
 @Entity
 public class Light {
@@ -12,9 +12,6 @@ public class Light {
     private Integer catagoryId;
     private Integer brandId;
     private Integer styleId;
-    private String stuff;
-    private String color;
-    private String locate;
     private Integer price;
     private Integer quantity;
     private String description;
@@ -22,10 +19,18 @@ public class Light {
     private String image2;
     private String image3;
     private String name;
+    private Integer stuffId;
+    private Integer locateId;
+    private Double discount;
+    private Integer click;
+    private Integer sale;
+    private Integer store;
     private Collection<Comments> commentsByLightId;
     private Catagory catagoryByCatagoryId;
     private Brand brandByBrandId;
-    private Stryle stryleByStyleId;
+    private Style styleByStyleId;
+    private Stuff stuffByStuffId;
+    private Locate locateByLocateId;
     private Collection<Myshopcart> myshopcartsByLightId;
     private Collection<Orderlight> orderlightsByLightId;
     private Collection<Wishlist> wishlistsByLightId;
@@ -68,36 +73,6 @@ public class Light {
 
     public void setStyleId(Integer styleId) {
         this.styleId = styleId;
-    }
-
-    @Basic
-    @Column(name = "Stuff", nullable = true, length = 20)
-    public String getStuff() {
-        return stuff;
-    }
-
-    public void setStuff(String stuff) {
-        this.stuff = stuff;
-    }
-
-    @Basic
-    @Column(name = "Color", nullable = true, length = 20)
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    @Basic
-    @Column(name = "Locate", nullable = true, length = 20)
-    public String getLocate() {
-        return locate;
-    }
-
-    public void setLocate(String locate) {
-        this.locate = locate;
     }
 
     @Basic
@@ -170,6 +145,66 @@ public class Light {
         this.name = name;
     }
 
+    @Basic
+    @Column(name = "StuffId", nullable = false)
+    public Integer getStuffId() {
+        return stuffId;
+    }
+
+    public void setStuffId(Integer stuffId) {
+        this.stuffId = stuffId;
+    }
+
+    @Basic
+    @Column(name = "LocateId", nullable = false)
+    public Integer getLocateId() {
+        return locateId;
+    }
+
+    public void setLocateId(Integer locateId) {
+        this.locateId = locateId;
+    }
+
+    @Basic
+    @Column(name = "Discount", nullable = false, precision = 0)
+    public Double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Double discount) {
+        this.discount = discount;
+    }
+
+    @Basic
+    @Column(name = "Click", nullable = false)
+    public Integer getClick() {
+        return click;
+    }
+
+    public void setClick(Integer click) {
+        this.click = click;
+    }
+
+    @Basic
+    @Column(name = "Sale", nullable = false)
+    public Integer getSale() {
+        return sale;
+    }
+
+    public void setSale(Integer sale) {
+        this.sale = sale;
+    }
+
+    @Basic
+    @Column(name = "Store", nullable = false)
+    public Integer getStore() {
+        return store;
+    }
+
+    public void setStore(Integer store) {
+        this.store = store;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -181,9 +216,6 @@ public class Light {
         if (catagoryId != null ? !catagoryId.equals(light.catagoryId) : light.catagoryId != null) return false;
         if (brandId != null ? !brandId.equals(light.brandId) : light.brandId != null) return false;
         if (styleId != null ? !styleId.equals(light.styleId) : light.styleId != null) return false;
-        if (stuff != null ? !stuff.equals(light.stuff) : light.stuff != null) return false;
-        if (color != null ? !color.equals(light.color) : light.color != null) return false;
-        if (locate != null ? !locate.equals(light.locate) : light.locate != null) return false;
         if (price != null ? !price.equals(light.price) : light.price != null) return false;
         if (quantity != null ? !quantity.equals(light.quantity) : light.quantity != null) return false;
         if (description != null ? !description.equals(light.description) : light.description != null) return false;
@@ -191,6 +223,12 @@ public class Light {
         if (image2 != null ? !image2.equals(light.image2) : light.image2 != null) return false;
         if (image3 != null ? !image3.equals(light.image3) : light.image3 != null) return false;
         if (name != null ? !name.equals(light.name) : light.name != null) return false;
+        if (stuffId != null ? !stuffId.equals(light.stuffId) : light.stuffId != null) return false;
+        if (locateId != null ? !locateId.equals(light.locateId) : light.locateId != null) return false;
+        if (discount != null ? !discount.equals(light.discount) : light.discount != null) return false;
+        if (click != null ? !click.equals(light.click) : light.click != null) return false;
+        if (sale != null ? !sale.equals(light.sale) : light.sale != null) return false;
+        if (store != null ? !store.equals(light.store) : light.store != null) return false;
 
         return true;
     }
@@ -201,9 +239,6 @@ public class Light {
         result = 31 * result + (catagoryId != null ? catagoryId.hashCode() : 0);
         result = 31 * result + (brandId != null ? brandId.hashCode() : 0);
         result = 31 * result + (styleId != null ? styleId.hashCode() : 0);
-        result = 31 * result + (stuff != null ? stuff.hashCode() : 0);
-        result = 31 * result + (color != null ? color.hashCode() : 0);
-        result = 31 * result + (locate != null ? locate.hashCode() : 0);
         result = 31 * result + (price != null ? price.hashCode() : 0);
         result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
@@ -211,6 +246,12 @@ public class Light {
         result = 31 * result + (image2 != null ? image2.hashCode() : 0);
         result = 31 * result + (image3 != null ? image3.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (stuffId != null ? stuffId.hashCode() : 0);
+        result = 31 * result + (locateId != null ? locateId.hashCode() : 0);
+        result = 31 * result + (discount != null ? discount.hashCode() : 0);
+        result = 31 * result + (click != null ? click.hashCode() : 0);
+        result = 31 * result + (sale != null ? sale.hashCode() : 0);
+        result = 31 * result + (store != null ? store.hashCode() : 0);
         return result;
     }
 
@@ -224,7 +265,7 @@ public class Light {
     }
 
     @ManyToOne
-    @JoinColumn(name = "CatagoryId", referencedColumnName = "CatagoryId", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "CatagoryId", referencedColumnName = "CatagoryId", nullable = false,insertable = false,updatable = false)
     public Catagory getCatagoryByCatagoryId() {
         return catagoryByCatagoryId;
     }
@@ -234,7 +275,7 @@ public class Light {
     }
 
     @ManyToOne
-    @JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false,insertable = false,updatable = false)
     public Brand getBrandByBrandId() {
         return brandByBrandId;
     }
@@ -244,13 +285,33 @@ public class Light {
     }
 
     @ManyToOne
-    @JoinColumn(name = "StyleId", referencedColumnName = "StyleId", nullable = false, insertable = false, updatable = false)
-    public Stryle getStryleByStyleId() {
-        return stryleByStyleId;
+    @JoinColumn(name = "StyleId", referencedColumnName = "StyleId", nullable = false,insertable = false,updatable = false)
+    public Style getStyleByStyleId() {
+        return styleByStyleId;
     }
 
-    public void setStryleByStyleId(Stryle stryleByStyleId) {
-        this.stryleByStyleId = stryleByStyleId;
+    public void setStyleByStyleId(Style styleByStyleId) {
+        this.styleByStyleId = styleByStyleId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "StuffId", referencedColumnName = "StuffId", nullable = false,insertable = false,updatable = false)
+    public Stuff getStuffByStuffId() {
+        return stuffByStuffId;
+    }
+
+    public void setStuffByStuffId(Stuff stuffByStuffId) {
+        this.stuffByStuffId = stuffByStuffId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "LocateId", referencedColumnName = "LocateId", nullable = false,insertable = false,updatable = false)
+    public Locate getLocateByLocateId() {
+        return locateByLocateId;
+    }
+
+    public void setLocateByLocateId(Locate locateByLocateId) {
+        this.locateByLocateId = locateByLocateId;
     }
 
     @OneToMany(mappedBy = "lightByLightId")
@@ -279,5 +340,4 @@ public class Light {
     public void setWishlistsByLightId(Collection<Wishlist> wishlistsByLightId) {
         this.wishlistsByLightId = wishlistsByLightId;
     }
-
 }

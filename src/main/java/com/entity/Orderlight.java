@@ -3,13 +3,14 @@ package com.entity;
 import javax.persistence.*;
 
 /**
- * Created by AgZou on 2017/5/4.
+ * Created by AgZou on 2017/5/9.
  */
 @Entity
 public class Orderlight {
     private Integer id;
     private Integer orderId;
     private Integer lightId;
+    private Integer quantity;
     private Orders ordersByOrderId;
     private Light lightByLightId;
 
@@ -24,7 +25,7 @@ public class Orderlight {
     }
 
     @Basic
-    @Column(name = "OrderId", nullable = false)
+    @Column(name = "OrderId", nullable = false, length = 18)
     public Integer getOrderId() {
         return orderId;
     }
@@ -43,6 +44,16 @@ public class Orderlight {
         this.lightId = lightId;
     }
 
+    @Basic
+    @Column(name = "Quantity", nullable = false)
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,6 +64,7 @@ public class Orderlight {
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (orderId != null ? !orderId.equals(that.orderId) : that.orderId != null) return false;
         if (lightId != null ? !lightId.equals(that.lightId) : that.lightId != null) return false;
+        if (quantity != null ? !quantity.equals(that.quantity) : that.quantity != null) return false;
 
         return true;
     }
@@ -62,6 +74,7 @@ public class Orderlight {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (orderId != null ? orderId.hashCode() : 0);
         result = 31 * result + (lightId != null ? lightId.hashCode() : 0);
+        result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
         return result;
     }
 

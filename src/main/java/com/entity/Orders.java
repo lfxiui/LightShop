@@ -5,17 +5,15 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by AgZou on 2017/5/4.
+ * Created by AgZou on 2017/5/9.
  */
 @Entity
 public class Orders {
     private Integer ordersId;
     private Integer userId;
-    private Integer quantity;
     private Integer totalPrice;
     private Timestamp date;
     private Integer orderStateId;
-    private Integer showOrNot;
     private String receiveName;
     private String receivePhone;
     private String address;
@@ -29,7 +27,7 @@ public class Orders {
     private Orderstates orderstatesByOrderStateId;
 
     @Id
-    @Column(name = "OrdersId", nullable = false)
+    @Column(name = "OrdersId", nullable = false, length = 18)
     public Integer getOrdersId() {
         return ordersId;
     }
@@ -46,16 +44,6 @@ public class Orders {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-    @Basic
-    @Column(name = "Quantity", nullable = false)
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
     }
 
     @Basic
@@ -86,16 +74,6 @@ public class Orders {
 
     public void setOrderStateId(Integer orderStateId) {
         this.orderStateId = orderStateId;
-    }
-
-    @Basic
-    @Column(name = "ShowOrNot", nullable = false)
-    public Integer getShowOrNot() {
-        return showOrNot;
-    }
-
-    public void setShowOrNot(Integer showOrNot) {
-        this.showOrNot = showOrNot;
     }
 
     @Basic
@@ -187,12 +165,10 @@ public class Orders {
 
         if (ordersId != null ? !ordersId.equals(orders.ordersId) : orders.ordersId != null) return false;
         if (userId != null ? !userId.equals(orders.userId) : orders.userId != null) return false;
-        if (quantity != null ? !quantity.equals(orders.quantity) : orders.quantity != null) return false;
         if (totalPrice != null ? !totalPrice.equals(orders.totalPrice) : orders.totalPrice != null) return false;
         if (date != null ? !date.equals(orders.date) : orders.date != null) return false;
         if (orderStateId != null ? !orderStateId.equals(orders.orderStateId) : orders.orderStateId != null)
             return false;
-        if (showOrNot != null ? !showOrNot.equals(orders.showOrNot) : orders.showOrNot != null) return false;
         if (receiveName != null ? !receiveName.equals(orders.receiveName) : orders.receiveName != null) return false;
         if (receivePhone != null ? !receivePhone.equals(orders.receivePhone) : orders.receivePhone != null)
             return false;
@@ -210,11 +186,9 @@ public class Orders {
     public int hashCode() {
         int result = ordersId != null ? ordersId.hashCode() : 0;
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
         result = 31 * result + (totalPrice != null ? totalPrice.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (orderStateId != null ? orderStateId.hashCode() : 0);
-        result = 31 * result + (showOrNot != null ? showOrNot.hashCode() : 0);
         result = 31 * result + (receiveName != null ? receiveName.hashCode() : 0);
         result = 31 * result + (receivePhone != null ? receivePhone.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by AgZou on 2017/5/4.
+ * Created by AgZou on 2017/5/9.
  */
 @Entity
 public class Myshopcart {
@@ -13,7 +13,6 @@ public class Myshopcart {
     private Integer userId;
     private Timestamp addDate;
     private Integer quantiy;
-    private Integer select;
     private Light lightByLightId;
     private User userByUserId;
 
@@ -67,16 +66,6 @@ public class Myshopcart {
         this.quantiy = quantiy;
     }
 
-    @Basic
-    @Column(name = "Select", nullable = false)
-    public Integer getSelect() {
-        return select;
-    }
-
-    public void setSelect(Integer select) {
-        this.select = select;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -89,7 +78,6 @@ public class Myshopcart {
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (addDate != null ? !addDate.equals(that.addDate) : that.addDate != null) return false;
         if (quantiy != null ? !quantiy.equals(that.quantiy) : that.quantiy != null) return false;
-        if (select != null ? !select.equals(that.select) : that.select != null) return false;
 
         return true;
     }
@@ -101,7 +89,6 @@ public class Myshopcart {
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (addDate != null ? addDate.hashCode() : 0);
         result = 31 * result + (quantiy != null ? quantiy.hashCode() : 0);
-        result = 31 * result + (select != null ? select.hashCode() : 0);
         return result;
     }
 

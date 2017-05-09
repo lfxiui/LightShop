@@ -4,10 +4,10 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by AgZou on 2017/5/4.
+ * Created by AgZou on 2017/5/9.
  */
 @Entity
-public class Stryle {
+public class Style {
     private Integer styleId;
     private String styleName;
     private Collection<Light> lightsByStyleId;
@@ -37,10 +37,10 @@ public class Stryle {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Stryle stryle = (Stryle) o;
+        Style style = (Style) o;
 
-        if (styleId != null ? !styleId.equals(stryle.styleId) : stryle.styleId != null) return false;
-        if (styleName != null ? !styleName.equals(stryle.styleName) : stryle.styleName != null) return false;
+        if (styleId != null ? !styleId.equals(style.styleId) : style.styleId != null) return false;
+        if (styleName != null ? !styleName.equals(style.styleName) : style.styleName != null) return false;
 
         return true;
     }
@@ -52,7 +52,7 @@ public class Stryle {
         return result;
     }
 
-    @OneToMany(mappedBy = "stryleByStyleId")
+    @OneToMany(mappedBy = "styleByStyleId")
     public Collection<Light> getLightsByStyleId() {
         return lightsByStyleId;
     }

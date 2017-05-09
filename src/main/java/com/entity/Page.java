@@ -3,7 +3,7 @@ package com.entity;
 import javax.persistence.*;
 
 /**
- * Created by AgZou on 2017/5/4.
+ * Created by AgZou on 2017/5/9.
  */
 @Entity
 public class Page {
