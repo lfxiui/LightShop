@@ -17,178 +17,209 @@
     <table id="11" parent="2" name="catagory"/>
     <table id="12" parent="2" name="comments"/>
     <table id="13" parent="2" name="light"/>
-    <table id="14" parent="2" name="myshopcart"/>
-    <table id="15" parent="2" name="orderlight"/>
-    <table id="16" parent="2" name="orders"/>
-    <table id="17" parent="2" name="orderstates"/>
-    <table id="18" parent="2" name="page"/>
-    <table id="19" parent="2" name="statistics"/>
-    <table id="20" parent="2" name="stryle"/>
-    <table id="21" parent="2" name="user"/>
-    <table id="22" parent="2" name="userroles"/>
-    <table id="23" parent="2" name="userstates"/>
-    <table id="24" parent="2" name="wishlist"/>
-    <column id="25" parent="10" name="BrandId">
+    <table id="14" parent="2" name="locate"/>
+    <table id="15" parent="2" name="myshopcart"/>
+    <table id="16" parent="2" name="orderlight"/>
+    <table id="17" parent="2" name="orders"/>
+    <table id="18" parent="2" name="orderstates"/>
+    <table id="19" parent="2" name="page"/>
+    <table id="20" parent="2" name="stuff"/>
+    <table id="21" parent="2" name="style"/>
+    <table id="22" parent="2" name="user"/>
+    <table id="23" parent="2" name="userroles"/>
+    <table id="24" parent="2" name="userstates"/>
+    <table id="25" parent="2" name="wishlist"/>
+    <column id="26" parent="10" name="BrandId">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="26" parent="10" name="BrandName">
+    <column id="27" parent="10" name="BrandName">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="27" parent="10" name="PRIMARY">
+    <key id="28" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>BrandId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="28" parent="11" name="CatagoryId">
+    <column id="29" parent="11" name="CatagoryId">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="29" parent="11" name="CatagoryName">
+    <column id="30" parent="11" name="CatagoryName">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="30" parent="11" name="PRIMARY">
+    <key id="31" parent="11" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>CatagoryId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="31" parent="12" name="CommentsId">
+    <column id="32" parent="12" name="CommentsId">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="32" parent="12" name="LightId">
+    <column id="33" parent="12" name="LightId">
       <Position>2</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="33" parent="12" name="UserId">
+    <column id="34" parent="12" name="UserId">
       <Position>3</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="34" parent="12" name="Comments">
+    <column id="35" parent="12" name="Comments">
       <Position>4</Position>
       <DataType>varchar(150)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="35" parent="12" name="Date">
+    <column id="36" parent="12" name="Date">
       <Position>5</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="36" parent="12" name="comm_lightId">
+    <index id="37" parent="12" name="comm_lightId">
       <ColNames>LightId</ColNames>
     </index>
-    <index id="37" parent="12" name="comm_UserId">
+    <index id="38" parent="12" name="comm_UserId">
       <ColNames>UserId</ColNames>
     </index>
-    <key id="38" parent="12" name="PRIMARY">
+    <key id="39" parent="12" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>CommentsId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="39" parent="12" name="comm_lightId">
+    <foreign-key id="40" parent="12" name="comm_lightId">
       <ColNames>LightId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
       <RefColNames>LightId</RefColNames>
       <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="40" parent="12" name="comm_UserId">
+    <foreign-key id="41" parent="12" name="comm_UserId">
       <ColNames>UserId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>UserId</RefColNames>
       <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="41" parent="13" name="LightId">
+    <column id="42" parent="13" name="LightId">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="42" parent="13" name="CatagoryId">
+    <column id="43" parent="13" name="CatagoryId">
       <Position>2</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="43" parent="13" name="BrandId">
+    <column id="44" parent="13" name="BrandId">
       <Position>3</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="44" parent="13" name="StyleId">
+    <column id="45" parent="13" name="StyleId">
       <Position>4</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="45" parent="13" name="Stuff">
-      <Position>5</Position>
-      <DataType>varchar(20)|0</DataType>
-    </column>
-    <column id="46" parent="13" name="Color">
-      <Position>6</Position>
-      <DataType>varchar(20)|0</DataType>
-    </column>
-    <column id="47" parent="13" name="Locate">
-      <Position>7</Position>
-      <DataType>varchar(20)|0</DataType>
-    </column>
-    <column id="48" parent="13" name="Price">
+    <column id="46" parent="13" name="Price">
       <Position>8</Position>
       <DataType>decimal(18)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="49" parent="13" name="Quantity">
+    <column id="47" parent="13" name="Quantity">
       <Position>9</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="50" parent="13" name="Description">
+    <column id="48" parent="13" name="Description">
       <Position>10</Position>
       <DataType>varchar(250)|0</DataType>
     </column>
-    <column id="51" parent="13" name="Image1">
+    <column id="49" parent="13" name="Image1">
       <Position>11</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="52" parent="13" name="Image2">
+    <column id="50" parent="13" name="Image2">
       <Position>12</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="53" parent="13" name="Image3">
+    <column id="51" parent="13" name="Image3">
       <Position>13</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="54" parent="13" name="Name">
+    <column id="52" parent="13" name="Name">
       <Position>14</Position>
       <DataType>varchar(20)|0</DataType>
     </column>
-    <index id="55" parent="13" name="Light_Brand">
+    <column id="53" parent="13" name="StuffId">
+      <Position>5</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="54" parent="13" name="LocateId">
+      <Position>6</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="55" parent="13" name="Discount">
+      <Position>7</Position>
+      <DataType>float(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;1&apos;</DefaultExpression>
+    </column>
+    <column id="56" parent="13" name="Click">
+      <Position>15</Position>
+      <DataType>int(5)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="57" parent="13" name="Sale">
+      <Position>16</Position>
+      <DataType>int(5)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <column id="58" parent="13" name="Store">
+      <Position>17</Position>
+      <DataType>int(5)|0</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>&apos;0&apos;</DefaultExpression>
+    </column>
+    <index id="59" parent="13" name="Light_Brand">
       <ColNames>BrandId</ColNames>
     </index>
-    <index id="56" parent="13" name="Light_Cata">
+    <index id="60" parent="13" name="Light_Cata">
       <ColNames>CatagoryId</ColNames>
     </index>
-    <index id="57" parent="13" name="Light_Stytle">
+    <index id="61" parent="13" name="Light_Stytle">
       <ColNames>StyleId</ColNames>
     </index>
-    <key id="58" parent="13" name="PRIMARY">
+    <index id="62" parent="13" name="LocateId">
+      <ColNames>LocateId</ColNames>
+    </index>
+    <index id="63" parent="13" name="StuffId">
+      <ColNames>StuffId</ColNames>
+    </index>
+    <key id="64" parent="13" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>LightId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="59" parent="13" name="Light_Cata">
+    <foreign-key id="65" parent="13" name="Light_Cata">
       <ColNames>CatagoryId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>catagory</RefTableName>
@@ -196,7 +227,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="60" parent="13" name="Light_Brand">
+    <foreign-key id="66" parent="13" name="Light_Brand">
       <ColNames>BrandId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>brand</RefTableName>
@@ -204,58 +235,84 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="61" parent="13" name="Light_Stytle">
+    <foreign-key id="67" parent="13" name="Light_Stytle">
       <ColNames>StyleId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
-      <RefTableName>stryle</RefTableName>
+      <RefTableName>style</RefTableName>
       <RefColNames>StyleId</RefColNames>
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="62" parent="14" name="ShopCartId">
+    <foreign-key id="68" parent="13" name="light_ibfk_1">
+      <ColNames>StuffId</ColNames>
+      <RefSchemaName>shop</RefSchemaName>
+      <RefTableName>stuff</RefTableName>
+      <RefColNames>StuffId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <foreign-key id="69" parent="13" name="light_ibfk_2">
+      <ColNames>LocateId</ColNames>
+      <RefSchemaName>shop</RefSchemaName>
+      <RefTableName>locate</RefTableName>
+      <RefColNames>LocateId</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+      <OnDelete>cascade</OnDelete>
+    </foreign-key>
+    <column id="70" parent="14" name="LocateId">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="63" parent="14" name="LightId">
+    <column id="71" parent="14" name="Name">
+      <Position>2</Position>
+      <DataType>varchar(50)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="72" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>LocateId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="73" parent="15" name="ShopCartId">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="74" parent="15" name="LightId">
       <Position>2</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="64" parent="14" name="UserId">
+    <column id="75" parent="15" name="UserId">
       <Position>3</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="65" parent="14" name="AddDate">
+    <column id="76" parent="15" name="AddDate">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="66" parent="14" name="Quantiy">
+    <column id="77" parent="15" name="Quantiy">
       <Position>5</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="67" parent="14" name="Select">
-      <Position>6</Position>
-      <DataType>int(1)|0</DataType>
-      <NotNull>1</NotNull>
-      <DefaultExpression>&apos;0&apos;</DefaultExpression>
-    </column>
-    <index id="68" parent="14" name="Cart_Light">
+    <index id="78" parent="15" name="Cart_Light">
       <ColNames>LightId</ColNames>
     </index>
-    <index id="69" parent="14" name="Cart_User">
+    <index id="79" parent="15" name="Cart_User">
       <ColNames>UserId</ColNames>
     </index>
-    <key id="70" parent="14" name="PRIMARY">
+    <key id="80" parent="15" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>ShopCartId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="71" parent="14" name="Cart_Light">
+    <foreign-key id="81" parent="15" name="Cart_Light">
       <ColNames>LightId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -263,7 +320,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="72" parent="14" name="Cart_User">
+    <foreign-key id="82" parent="15" name="Cart_User">
       <ColNames>UserId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -271,34 +328,39 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="73" parent="15" name="Id">
+    <column id="83" parent="16" name="Id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="74" parent="15" name="OrderId">
+    <column id="84" parent="16" name="OrderId">
       <Position>2</Position>
-      <DataType>int(10)|0</DataType>
+      <DataType>varchar(18)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="75" parent="15" name="LightId">
+    <column id="85" parent="16" name="LightId">
       <Position>3</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="76" parent="15" name="LightId">
+    <column id="86" parent="16" name="Quantity">
+      <Position>4</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="87" parent="16" name="LightId">
       <ColNames>LightId</ColNames>
     </index>
-    <index id="77" parent="15" name="OrderId">
+    <index id="88" parent="16" name="OrderId">
       <ColNames>OrderId</ColNames>
     </index>
-    <key id="78" parent="15" name="PRIMARY">
+    <key id="89" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="79" parent="15" name="orderlight_ibfk_1">
+    <foreign-key id="90" parent="16" name="orderlight_ibfk_3">
       <ColNames>OrderId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>orders</RefTableName>
@@ -306,7 +368,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="80" parent="15" name="orderlight_ibfk_2">
+    <foreign-key id="91" parent="16" name="orderlight_ibfk_4">
       <ColNames>LightId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -314,91 +376,81 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="81" parent="16" name="OrdersId">
+    <column id="92" parent="17" name="OrdersId">
       <Position>1</Position>
-      <DataType>int(10)|0</DataType>
+      <DataType>varchar(18)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="82" parent="16" name="UserId">
+    <column id="93" parent="17" name="UserId">
       <Position>2</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="83" parent="16" name="Quantity">
+    <column id="94" parent="17" name="TotalPrice">
       <Position>3</Position>
-      <DataType>int(4)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="84" parent="16" name="TotalPrice">
-      <Position>4</Position>
       <DataType>decimal(18)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="85" parent="16" name="Date">
-      <Position>5</Position>
+    <column id="95" parent="17" name="Date">
+      <Position>4</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="86" parent="16" name="OrderStateId">
+    <column id="96" parent="17" name="OrderStateId">
+      <Position>5</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="97" parent="17" name="ReceiveName">
       <Position>6</Position>
-      <DataType>int(4)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="87" parent="16" name="ShowOrNot">
-      <Position>7</Position>
-      <DataType>int(4)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="88" parent="16" name="ReceiveName">
-      <Position>8</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="89" parent="16" name="ReceivePhone">
-      <Position>9</Position>
+    <column id="98" parent="17" name="ReceivePhone">
+      <Position>7</Position>
       <DataType>varchar(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="90" parent="16" name="Address">
-      <Position>10</Position>
+    <column id="99" parent="17" name="Address">
+      <Position>8</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="91" parent="16" name="Email">
-      <Position>11</Position>
+    <column id="100" parent="17" name="Email">
+      <Position>9</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="92" parent="16" name="PostalCode">
-      <Position>12</Position>
+    <column id="101" parent="17" name="PostalCode">
+      <Position>10</Position>
       <DataType>varchar(6)|0</DataType>
     </column>
-    <column id="93" parent="16" name="PostType">
-      <Position>13</Position>
+    <column id="102" parent="17" name="PostType">
+      <Position>11</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="94" parent="16" name="PaymentType">
-      <Position>14</Position>
+    <column id="103" parent="17" name="PaymentType">
+      <Position>12</Position>
       <DataType>varchar(20)|0</DataType>
     </column>
-    <column id="95" parent="16" name="PostFee">
-      <Position>15</Position>
+    <column id="104" parent="17" name="PostFee">
+      <Position>13</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="96" parent="16" name="UserId">
+    <index id="105" parent="17" name="UserId">
       <ColNames>UserId</ColNames>
     </index>
-    <index id="97" parent="16" name="OrderStateId">
+    <index id="106" parent="17" name="OrderStateId">
       <ColNames>OrderStateId</ColNames>
     </index>
-    <key id="98" parent="16" name="PRIMARY">
+    <key id="107" parent="17" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>OrdersId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="99" parent="16" name="orders_ibfk_1">
+    <foreign-key id="108" parent="17" name="orders_ibfk_1">
       <ColNames>UserId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>user</RefTableName>
@@ -406,7 +458,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="100" parent="16" name="orders_ibfk_2">
+    <foreign-key id="109" parent="17" name="orders_ibfk_2">
       <ColNames>OrderStateId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>orderstates</RefTableName>
@@ -414,115 +466,115 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="101" parent="17" name="Id">
+    <column id="110" parent="18" name="Id">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="102" parent="17" name="Name">
+    <column id="111" parent="18" name="Name">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="103" parent="17" name="PRIMARY">
+    <key id="112" parent="18" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="104" parent="18" name="Id">
+    <column id="113" parent="19" name="Id">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="105" parent="18" name="HotSale1">
+    <column id="114" parent="19" name="HotSale1">
       <Position>2</Position>
       <DataType>int(4)|0</DataType>
     </column>
-    <column id="106" parent="18" name="HotSale2">
+    <column id="115" parent="19" name="HotSale2">
       <Position>3</Position>
       <DataType>int(4)|0</DataType>
     </column>
-    <column id="107" parent="18" name="HotSale3">
+    <column id="116" parent="19" name="HotSale3">
       <Position>4</Position>
       <DataType>int(4)|0</DataType>
     </column>
-    <column id="108" parent="18" name="HotSale4">
+    <column id="117" parent="19" name="HotSale4">
       <Position>5</Position>
       <DataType>int(4)|0</DataType>
     </column>
-    <column id="109" parent="18" name="HotSale5">
+    <column id="118" parent="19" name="HotSale5">
       <Position>6</Position>
       <DataType>int(4)|0</DataType>
     </column>
-    <column id="110" parent="18" name="HotSale6">
+    <column id="119" parent="19" name="HotSale6">
       <Position>7</Position>
       <DataType>int(4)|0</DataType>
     </column>
-    <column id="111" parent="18" name="HotSale7">
+    <column id="120" parent="19" name="HotSale7">
       <Position>8</Position>
       <DataType>int(4)|0</DataType>
     </column>
-    <column id="112" parent="18" name="HotSale8">
+    <column id="121" parent="19" name="HotSale8">
       <Position>9</Position>
       <DataType>int(4)|0</DataType>
     </column>
-    <column id="113" parent="18" name="EndSale1">
+    <column id="122" parent="19" name="EndSale1">
       <Position>10</Position>
       <DataType>int(4)|0</DataType>
     </column>
-    <column id="114" parent="18" name="EndSale2">
+    <column id="123" parent="19" name="EndSale2">
       <Position>11</Position>
       <DataType>int(4)|0</DataType>
     </column>
-    <column id="115" parent="18" name="CarouselImg1">
+    <column id="124" parent="19" name="CarouselImg1">
       <Position>12</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="116" parent="18" name="CarouselImg2">
+    <column id="125" parent="19" name="CarouselImg2">
       <Position>13</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="117" parent="18" name="CarouselImg3">
+    <column id="126" parent="19" name="CarouselImg3">
       <Position>14</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <index id="118" parent="18" name="EndSale1">
+    <index id="127" parent="19" name="EndSale1">
       <ColNames>EndSale1</ColNames>
     </index>
-    <index id="119" parent="18" name="EndSale2">
+    <index id="128" parent="19" name="EndSale2">
       <ColNames>EndSale2</ColNames>
     </index>
-    <index id="120" parent="18" name="HotSale2">
+    <index id="129" parent="19" name="HotSale2">
       <ColNames>HotSale2</ColNames>
     </index>
-    <index id="121" parent="18" name="HotSale3">
+    <index id="130" parent="19" name="HotSale3">
       <ColNames>HotSale3</ColNames>
     </index>
-    <index id="122" parent="18" name="HotSale4">
+    <index id="131" parent="19" name="HotSale4">
       <ColNames>HotSale4</ColNames>
     </index>
-    <index id="123" parent="18" name="HotSale5">
+    <index id="132" parent="19" name="HotSale5">
       <ColNames>HotSale5</ColNames>
     </index>
-    <index id="124" parent="18" name="HotSale6">
+    <index id="133" parent="19" name="HotSale6">
       <ColNames>HotSale6</ColNames>
     </index>
-    <index id="125" parent="18" name="HotSale7">
+    <index id="134" parent="19" name="HotSale7">
       <ColNames>HotSale7</ColNames>
     </index>
-    <index id="126" parent="18" name="HotSale8">
+    <index id="135" parent="19" name="HotSale8">
       <ColNames>HotSale8</ColNames>
     </index>
-    <index id="127" parent="18" name="index_ibfk_1">
+    <index id="136" parent="19" name="index_ibfk_1">
       <ColNames>HotSale1</ColNames>
     </index>
-    <key id="128" parent="18" name="PRIMARY">
+    <key id="137" parent="19" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="129" parent="18" name="page_ibfk_1">
+    <foreign-key id="138" parent="19" name="page_ibfk_1">
       <ColNames>HotSale1</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -530,7 +582,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="130" parent="18" name="page_ibfk_2">
+    <foreign-key id="139" parent="19" name="page_ibfk_2">
       <ColNames>HotSale2</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -538,7 +590,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="131" parent="18" name="page_ibfk_3">
+    <foreign-key id="140" parent="19" name="page_ibfk_3">
       <ColNames>HotSale3</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -546,7 +598,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="132" parent="18" name="page_ibfk_4">
+    <foreign-key id="141" parent="19" name="page_ibfk_4">
       <ColNames>HotSale4</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -554,7 +606,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="133" parent="18" name="page_ibfk_5">
+    <foreign-key id="142" parent="19" name="page_ibfk_5">
       <ColNames>HotSale5</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -562,7 +614,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="134" parent="18" name="page_ibfk_6">
+    <foreign-key id="143" parent="19" name="page_ibfk_6">
       <ColNames>HotSale6</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -570,7 +622,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="135" parent="18" name="page_ibfk_7">
+    <foreign-key id="144" parent="19" name="page_ibfk_7">
       <ColNames>HotSale7</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -578,7 +630,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="136" parent="18" name="page_ibfk_8">
+    <foreign-key id="145" parent="19" name="page_ibfk_8">
       <ColNames>HotSale8</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -586,7 +638,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="137" parent="18" name="page_ibfk_9">
+    <foreign-key id="146" parent="19" name="page_ibfk_9">
       <ColNames>EndSale1</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -594,7 +646,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <foreign-key id="138" parent="18" name="page_ibfk_10">
+    <foreign-key id="147" parent="19" name="page_ibfk_10">
       <ColNames>EndSale2</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -602,116 +654,107 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>set-null</OnDelete>
     </foreign-key>
-    <column id="139" parent="19" name="LightId">
-      <Position>1</Position>
-      <DataType>int(4)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="140" parent="19" name="Clicks">
-      <Position>2</Position>
-      <DataType>int(4)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="141" parent="19" name="StoreCount">
-      <Position>3</Position>
-      <DataType>int(4)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="142" parent="19" name="StateCount">
-      <Position>4</Position>
-      <DataType>int(4)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <key id="143" parent="19" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>LightId</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="144" parent="20" name="StyleId">
+    <column id="148" parent="20" name="StuffId">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="145" parent="20" name="StyleName">
+    <column id="149" parent="20" name="StuffName">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="146" parent="20" name="PRIMARY">
+    <key id="150" parent="20" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>StuffId</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="151" parent="21" name="StyleId">
+      <Position>1</Position>
+      <DataType>int(4)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="152" parent="21" name="StyleName">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="153" parent="21" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>StyleId</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="147" parent="21" name="UserId">
+    <column id="154" parent="22" name="UserId">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="148" parent="21" name="UserName">
+    <column id="155" parent="22" name="UserName">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="149" parent="21" name="Address">
+    <column id="156" parent="22" name="Address">
       <Position>3</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="150" parent="21" name="PostalCode">
+    <column id="157" parent="22" name="PostalCode">
       <Position>4</Position>
       <DataType>varchar(6)|0</DataType>
     </column>
-    <column id="151" parent="21" name="Phone">
+    <column id="158" parent="22" name="Phone">
       <Position>5</Position>
       <DataType>varchar(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="152" parent="21" name="Email">
+    <column id="159" parent="22" name="Email">
       <Position>6</Position>
       <DataType>varchar(50)|0</DataType>
     </column>
-    <column id="153" parent="21" name="Gender">
+    <column id="160" parent="22" name="Gender">
       <Position>7</Position>
       <DataType>varchar(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="154" parent="21" name="UserRoleId">
+    <column id="161" parent="22" name="UserRoleId">
       <Position>8</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="155" parent="21" name="UserStateId">
+    <column id="162" parent="22" name="UserStateId">
       <Position>9</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="156" parent="21" name="LoginId">
+    <column id="163" parent="22" name="LoginId">
       <Position>10</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="157" parent="21" name="LoginPwd">
+    <column id="164" parent="22" name="LoginPwd">
       <Position>11</Position>
       <DataType>varchar(50)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="158" parent="21" name="LastLoginTime">
+    <column id="165" parent="22" name="LastLoginTime">
       <Position>12</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <index id="159" parent="21" name="user_ibfk_1">
+    <index id="166" parent="22" name="user_ibfk_1">
       <ColNames>UserRoleId</ColNames>
     </index>
-    <index id="160" parent="21" name="user_ibfk_2">
+    <index id="167" parent="22" name="user_ibfk_2">
       <ColNames>UserStateId</ColNames>
     </index>
-    <key id="161" parent="21" name="PRIMARY">
+    <key id="168" parent="22" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>UserId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="162" parent="21" name="user_ibfk_1">
+    <foreign-key id="169" parent="22" name="user_ibfk_1">
       <ColNames>UserRoleId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>userroles</RefTableName>
@@ -719,7 +762,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="163" parent="21" name="user_ibfk_2">
+    <foreign-key id="170" parent="22" name="user_ibfk_2">
       <ColNames>UserStateId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>userstates</RefTableName>
@@ -727,71 +770,71 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <column id="164" parent="22" name="Id">
+    <column id="171" parent="23" name="Id">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="165" parent="22" name="Name">
+    <column id="172" parent="23" name="Name">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="166" parent="22" name="PRIMARY">
+    <key id="173" parent="23" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="167" parent="23" name="Id">
+    <column id="174" parent="24" name="Id">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="168" parent="23" name="Nmae">
+    <column id="175" parent="24" name="Nmae">
       <Position>2</Position>
       <DataType>varchar(20)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="169" parent="23" name="PRIMARY">
+    <key id="176" parent="24" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>Id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="170" parent="24" name="WishListId">
+    <column id="177" parent="25" name="WishListId">
       <Position>1</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="171" parent="24" name="LightId">
+    <column id="178" parent="25" name="LightId">
       <Position>2</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="172" parent="24" name="UserId">
+    <column id="179" parent="25" name="UserId">
       <Position>3</Position>
       <DataType>int(4)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="173" parent="24" name="StoreDate">
+    <column id="180" parent="25" name="StoreDate">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="174" parent="24" name="wishlist_ibfk_1">
+    <index id="181" parent="25" name="wishlist_ibfk_1">
       <ColNames>LightId</ColNames>
     </index>
-    <index id="175" parent="24" name="wishlist_ibfk_2">
+    <index id="182" parent="25" name="wishlist_ibfk_2">
       <ColNames>UserId</ColNames>
     </index>
-    <key id="176" parent="24" name="PRIMARY">
+    <key id="183" parent="25" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>WishListId</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="177" parent="24" name="wishlist_ibfk_1">
+    <foreign-key id="184" parent="25" name="wishlist_ibfk_1">
       <ColNames>LightId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>light</RefTableName>
@@ -799,7 +842,7 @@
       <OnUpdate>cascade</OnUpdate>
       <OnDelete>cascade</OnDelete>
     </foreign-key>
-    <foreign-key id="178" parent="24" name="wishlist_ibfk_2">
+    <foreign-key id="185" parent="25" name="wishlist_ibfk_2">
       <ColNames>UserId</ColNames>
       <RefSchemaName>shop</RefSchemaName>
       <RefTableName>user</RefTableName>

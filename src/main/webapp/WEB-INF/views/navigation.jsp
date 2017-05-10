@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: AgZou
@@ -82,29 +83,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" >品牌</a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Custom Menu</a></li>
-                        <li><a href="#">Custom Menu</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Sub Menu</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Custom Menu</a></li>
-                                <li><a href="#">Custom Menu</a></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" >Sub Menu</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#">Custom Menu</a></li>
-                                        <li><a href="#">Custom Menu</a></li>
-                                        <li><a href="#">Custom Menu</a></li>
-                                        <li><a href="#">Custom Menu</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Custom Menu</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Custom Menu</a></li>
-                        <li><a href="#">Custom Menu</a></li>
-                        <li><a href="#">Custom Menu</a></li>
-                        <li><a href="#">Custom Menu</a></li>
+                        <c:forEach items="${Brands}" var="Brand">
+                        <li><a href="${pageContext.request.contextPath}/search/type?name=brandId&id=${Brand.brandId}" class="text-center">${Brand.brandName}</a></li>
+                        </c:forEach>
                     </ul>
                 </li>
                 <li class="dropdown megamenu-fw">
@@ -112,42 +93,43 @@
                     <ul class="dropdown-menu megamenu-content" role="menu">
                         <li>
                             <div class="row">
-                                <div class="col-menu col-xs-4">
-                                    <h6 class="title">风格</h6>
+                                <div class="col-menu col-xs-3">
+                                    <h6 class="title">适用空间</h6>
                                     <div class="content">
                                         <ul class="menu-col">
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
+                                            <c:forEach items="${Locates}" var="Locate">
+                                            <li><a href="${pageContext.request.contextPath}/search/type?name=locateId&id=${Locate.locateId}">${Locate.name}</a></li>
+                                            </c:forEach>
                                         </ul>
                                     </div>
                                 </div><!-- end col-3 -->
-                                <div class="col-menu col-xs-4">
-                                    <h6 class="title">种类</h6>
+                                <div class="col-menu col-xs-3">
+                                    <h6 class="title">光源类型</h6>
                                     <div class="content">
                                         <ul class="menu-col">
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
+                                            <c:forEach items="${Catagorys}" var="Catagory">
+                                            <li><a href="${pageContext.request.contextPath}/search/type?name=catagoryId&id=${Catagory.catagoryId}">${Catagory.catagoryName}</a></li>
+                                            </c:forEach>
                                         </ul>
                                     </div>
                                 </div><!-- end col-3 -->
-                                <div class="col-menu col-xs-4">
-                                    <h6 class="title">位置</h6>
+                                <div class="col-menu col-xs-3">
+                                    <h6 class="title">灯饰风格</h6>
                                     <div class="content">
                                         <ul class="menu-col">
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
-                                            <li><a href="#">Custom Menu</a></li>
+                                            <c:forEach items="${Styles}" var="Style">
+                                            <li><a href="${pageContext.request.contextPath}/search/type?name=styleId&id=${Style.styleId}">${Style.styleName}</a></li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-menu col-xs-3">
+                                    <h6 class="title">材质</h6>
+                                    <div class="content">
+                                        <ul class="menu-col">
+                                            <c:forEach items="${Stuffs}" var="Stuff">
+                                                <li><a href="${pageContext.request.contextPath}/search/type?name=stuffId&id=${Stuff.stuffId}">${Stuff.stuffName}</a></li>
+                                            </c:forEach>
                                         </ul>
                                     </div>
                                 </div>

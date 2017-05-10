@@ -4,11 +4,13 @@ import com.entity.Light;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -20,10 +22,21 @@ public class SearchDao {
     private Session getSession(){
         return  this.sessionFactory.getCurrentSession();
     }
-    public List<Light> getLightsByAll(String flag){
-        Query query=this.getSession().createQuery("from Light where name like ? or description like ?");
-        query.setParameter(0,"%"+flag+"%");
-        query.setParameter(1,"%"+flag+"%");
-        return  query.getResultList();
-    }
+    public List<Light> getLightsByAll(HashMap map,List<Integer> checkbox){
+    Criteria criteria=this.getSession().createCriteria(Light.class);if(checkbox.size()>0)
+            criteria.add(Restrictions.in("brandId",checkbox));
+  //  criteria.add(Restrictions.or(Restrictions.like("description",flag,MatchMode.ANYWHERE),Restrictions.like("name",flag, MatchMode.ANYWHERE)));
+    return criteria.add(Restrictions.allEq(map)).list();
+}
+public List<Light> getLightsByForm(HashMap map,String flag,Integer[] checkbox){
+    Criteria criteria=this.getSession().createCriteria(Light.class);
+    criteria.add(Restrictions.or(Restrictions.like("description",flag,MatchMode.ANYWHERE),Restrictions.like("name",flag, MatchMode.ANYWHERE)));
+    if(checkbox!=null&&checkbox.length>0)
+    criteria.add(Restrictions.in("brandId",checkbox));
+    return criteria.add(Restrictions.allEq(map)).list();
+}
+public List<Light> getLightsByType(String name,Integer id){
+    Criteria criteria=this.getSession().createCriteria(Light.class);
+    return criteria.add(Restrictions.eq(name,id)).list();
+}
 }

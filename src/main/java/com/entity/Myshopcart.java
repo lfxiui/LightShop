@@ -18,6 +18,7 @@ public class Myshopcart {
 
     @Id
     @Column(name = "ShopCartId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getShopCartId() {
         return shopCartId;
     }

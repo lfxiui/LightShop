@@ -1,8 +1,7 @@
 package com.service;
 
 import com.dao.PageDao;
-import com.entity.Light;
-import com.entity.Page;
+import com.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,5 +51,20 @@ public class PageService {
         if(page.getEndSale2()!=null&&page.getEndSale2()!=0)
             elights.add(page.getLightByEndSale2());
         return elights;
+    }
+    public List<Brand> getBrands(){
+       return  pageDao.getBrands();
+    }
+    public List<Style> getStyles(){
+        return pageDao.getStyles();
+    }
+    public List<Stuff> getStuffs(){
+        return pageDao.getStuffs();
+    }
+    public List<Locate> getLocates(){
+        return pageDao.getLocates();
+    }
+    public List<Catagory> getCatagorys(){
+        return pageDao.getCatagorys();
     }
 }

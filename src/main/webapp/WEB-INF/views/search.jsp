@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: AgZou
@@ -36,100 +37,126 @@
 <div class="product-model">
     <div class="container">
         <ol class="breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li class="active">Products</li>
+            <li><a href="index.html">搜索条件</a></li>
+            <li class="active">
+                <c:forEach items="${map}" var="m">
+                    <c:if test="${m.key eq 'stuffId'}">
+                        <c:forEach items="${Stuffs}" var="stuff">
+                            <c:if test="${stuff.stuffId eq m.value}">
+                                <a style="border:solid 1px" href="${pageContext.request.contextPath}/search/all?operate=delete&name=${m.key}">${stuff.stuffName}<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                            </c:if>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${m.key eq 'locateId'}">
+                        <c:forEach items="${Locates}" var="Locate">
+                            <c:if test="${Locate.locateId eq m.value}">
+                <a style="border:solid 1px" href="${pageContext.request.contextPath}/search/all?operate=delete&name=${m.key}">${Locate.name}<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                            </c:if>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${m.key eq 'catagoryId'}">
+                        <c:forEach items="${Catagorys}" var="catagory">
+                            <c:if test="${catagory.catagoryId eq m.value}">
+                                <a style="border:solid 1px" href="${pageContext.request.contextPath}/search/all?operate=delete&name=${m.key}">${catagory.catagoryName}<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                            </c:if>
+                        </c:forEach>
+                    </c:if>
+                    <c:if test="${m.key eq 'styleId'}">
+                        <c:forEach items="${Styles}" var="style">
+                            <c:if test="${style.styleId eq m.value}">
+                                <a style="border:solid 1px" href="${pageContext.request.contextPath}/search/all?operate=delete&name=${m.key}">${style.styleName}<span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+                            </c:if>
+                        </c:forEach>
+                    </c:if>
+                </c:forEach></li>
         </ol>
         <h2>Our Products</h2>
+        <div class="col-md-9 product-model-sec">
+            <c:forEach items="${results}" var="light">
+        <div class="product-grid">
+            <a>
+                <div class="more-product"><span> </span></div>
+                <div class="product-img b-link-stripe b-animate-go  thickbox">
+                    <img src="/${light.image1}" class="img-responsive" alt="">
+                    <div class="b-wrapper">
+                        <h4 class="b-animate b-from-left  b-delay03">
+                            <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>查看详情</button>
+                        </h4>
+                    </div>
+                </div>
+            </a>
+            <div class="product-info simpleCart_shelfItem">
+                <div class="product-info-cust prt_name">
+                    <h4>${light.name}</h4>
+                    <span class="item_price">${light.price}</span>
+                    <div class="ofr">
+                        <p class="pric1"><del>${light.price}</del></p>
+                        <p class="disc">[12% Off]</p>
+                    </div>
+                    <input type="text" class="item_quantity" value="1" />
+                    <input type="button" class="item_add items" value="ADD">
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+            </c:forEach>
+        </div>
         <div class="rsidebar span_1_of_left">
-            <form class="form-inline">
+            <form class="form-inline" action="${pageContext.request.contextPath}/search/submit">
             <section  class="sky-form">
 
-                    <input type="text" class="form-control" placeholder="搜索">
-                    <button class="btn btn-default">查找</button>
+                    <input type="text" class="form-control" placeholder="搜索" name="flag">
+                    <button class="btn btn-default" type="submit">查找</button>
 
-                <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>价格区间</h4>
-                <ul class="dropdown-menu1">
-                    <li><a href="">
-                        <div id="slider-range"></div>
-                        <input type="text" id="amount" style="border: 0; font-weight: NORMAL;   font-family: 'Dosis-Regular';" />
-                    </a></li>
-                </ul>
             </section>
-            <!---->
-            <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
-            <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/jquery-ui.css">
-            <script type='text/javascript'>//<![CDATA[
-            $(window).load(function(){
-                $( "#slider-range" ).slider({
-                    range: true,
-                    min: 0,
-                    max: 100000,
-                    values: [ 0, 100000 ],
-                    slide: function( event, ui ) {  $( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
-                    }
-                });
-                $( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
-
-            });//]]>
-            </script>
             <section  class="sky-form">
                 <div class="product_right">
                     <h4 ><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>分类</h4>
                     <div class="tab1">
                         <ul class="place">
-                            <li class="sort">Home Decorates</li>
+                            <li class="sort">适用空间</li>
                             <div class="clearfix"> </div>
                         </ul>
                         <div class="single-bottom">
-                            <a href="#"><p>Lanterns</p></a>
-                            <a href="#"><p>Wall Lamps</p></a>
-                            <a href="#"><p>Table Lamps</p></a>
-                            <a href="#"><p>Selling Lamps</p></a>
+                            <c:forEach items="${Locates}" var="Locate">
+                            <a href="${pageContext.request.contextPath}/search/all?operate=add&name=locateId&id=${Locate.locateId}"><p>${Locate.name}</p></a>
+                            </c:forEach>
                         </div>
                     </div>
                     <div class="tab2">
                         <ul class="place">
-                            <li class="sort">Festive Needs</li>
+                            <li class="sort">光源类型</li>
                             <li class="by"><img src="images/do.png" alt=""></li>
                             <div class="clearfix"> </div>
                         </ul>
                         <div class="single-bottom">
-                            <a href="#"><p>Lanterns</p></a>
-                            <a href="#"><p>Disco Lights</p></a>
+                            <c:forEach items="${Catagorys}" var="catagory">
+                                <a href="${pageContext.request.contextPath}/search/all?operate=add&name=catagoryId&id=${catagory.catagoryId}"><p>${catagory.catagoryName}</p></a>
+                            </c:forEach>
                         </div>
                     </div>
                     <div class="tab3">
                         <ul class="place">
-                            <li class="sort">Kitchen & Dining</li>
+                            <li class="sort">灯饰风格</li>
                             <li class="by"><img src="images/do.png" alt=""></li>
                             <div class="clearfix"> </div>
                         </ul>
                         <div class="single-bottom">
-                            <a href="#"><p>Lights & Lamps</p></a>
+                            <c:forEach items="${Styles}" var="style">
+                                <a href="${pageContext.request.contextPath}/search/all?operate=add&name=styleId&id=${style.styleId}"><p>${style.styleName}</p></a>
+                            </c:forEach>
                         </div>
                     </div>
                     <div class="tab4">
                         <ul class="place">
-                            <li class="sort">Books</li>
+                            <li class="sort">材质</li>
                             <li class="by"><img src="images/do.png" alt=""></li>
                             <div class="clearfix"> </div>
                         </ul>
                         <div class="single-bottom">
-                            <a href="#"><p>Standing Lamps</p></a>
-                            <a href="#"><p>Lamps</p></a>
-                            <a href="#"><p>Led Lamps</p></a>
-                        </div>
-                    </div>
-                    <div class="tab5">
-                        <ul class="place">
-                            <li class="sort">Automotive</li>
-                            <li class="by"><img src="images/do.png" alt=""></li>
-                            <div class="clearfix"> </div>
-                        </ul>
-                        <div class="single-bottom">
-                            <a href="#"><p>Car Lights</p></a>
-                            <a href="#"><p>Stick Lights</p></a>
-                            <a href="#"><p>Thread Lights</p></a>
+                            <c:forEach items="${Stuffs}" var="stuff">
+                            <a href="${pageContext.request.contextPath}/search/all?operate=add&name=stuffId&id=${stuff.stuffId}"><p>${stuff.stuffName}</p></a>
+                        </c:forEach>
                         </div>
                     </div>
 
@@ -140,39 +167,30 @@
                             $(".tab2 .single-bottom").hide();
                             $(".tab3 .single-bottom").hide();
                             $(".tab4 .single-bottom").hide();
-                            $(".tab5 .single-bottom").hide();
+
 
                             $(".tab1 ul").click(function(){
                                 $(".tab1 .single-bottom").slideToggle(300);
                                 $(".tab2 .single-bottom").hide();
                                 $(".tab3 .single-bottom").hide();
                                 $(".tab4 .single-bottom").hide();
-                                $(".tab5 .single-bottom").hide();
+
                             })
                             $(".tab2 ul").click(function(){
                                 $(".tab2 .single-bottom").slideToggle(300);
                                 $(".tab1 .single-bottom").hide();
                                 $(".tab3 .single-bottom").hide();
                                 $(".tab4 .single-bottom").hide();
-                                $(".tab5 .single-bottom").hide();
+
                             })
                             $(".tab3 ul").click(function(){
                                 $(".tab3 .single-bottom").slideToggle(300);
                                 $(".tab4 .single-bottom").hide();
-                                $(".tab5 .single-bottom").hide();
                                 $(".tab2 .single-bottom").hide();
                                 $(".tab1 .single-bottom").hide();
                             })
                             $(".tab4 ul").click(function(){
                                 $(".tab4 .single-bottom").slideToggle(300);
-                                $(".tab5 .single-bottom").hide();
-                                $(".tab3 .single-bottom").hide();
-                                $(".tab2 .single-bottom").hide();
-                                $(".tab1 .single-bottom").hide();
-                            })
-                            $(".tab5 ul").click(function(){
-                                $(".tab5 .single-bottom").slideToggle(300);
-                                $(".tab4 .single-bottom").hide();
                                 $(".tab3 .single-bottom").hide();
                                 $(".tab2 .single-bottom").hide();
                                 $(".tab1 .single-bottom").hide();
@@ -186,16 +204,24 @@
                 <h4><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>品牌</h4>
                 <div class="row row1 scroll-pane">
                     <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i></i>Everyday</label>
+                        <c:forEach items="${Brands}" var="Brand">
+                            <c:if test="${BrandSelect[Brand.brandId] eq 0}">
+                                    <label class="checkbox"><input type="checkbox" name="checkbox" value="${Brand.brandId}" ><i></i>${Brand.brandName}</label>
+                            </c:if>
+                            <c:if test="${BrandSelect[Brand.brandId] eq 1}">
+                                <label class="checkbox"><input type="checkbox" name="checkbox" value="${Brand.brandId}" checked=""><i></i>${Brand.brandName}</label>
+                            </c:if>
+                        </c:forEach>
                     </div>
-                    <div class="col col-4">
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Anchor</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Philips</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Wipro</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Havells</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox" ><i></i>Ferolex</label>
-                        <label class="checkbox"><input type="checkbox" name="checkbox"><i></i>Gold Medal</label>
-                    </div>
+                    <script>
+                        $(document).ready(function () {
+                            $(':checkbox').click(function () {
+                                if($(this).is(':checked')){
+                                   $.ajax({url:"${pageContext.request.contextPath}/search/select",type:"POST",data:{'operate':'add','id':$(this).val()}})
+                                }else  $.ajax({url:"${pageContext.request.contextPath}/search/select",type:"POST",data:{'operate':'delete','id':$(this).val()}})
+                            })
+                        })
+                    </script>
                 </div>
             </section>
             </form>
