@@ -70,8 +70,19 @@
                     </c:if>
                 </c:forEach></li>
         </ol>
-        <h2>Our Products</h2>
+        <h2>产品列表</h2>
         <div class="col-md-9 product-model-sec">
+            <div class="btn-group pull-left" role="group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                    价格排序<span class="caret"></span></button>
+                <button type="button"  class="btn btn-default"  onclick="location=('${pageContext.request.contextPath}/search/sort?sort=3')" >销量排序</button>
+                <button type="button" class="btn btn-default"  onclick="location=('${pageContext.request.contextPath}/search/sort?sort=4')">人气排序</button>
+                <ul class="dropdown-menu">
+                    <li><a href="${pageContext.request.contextPath}/search/sort?sort=1">由低到高</a></li>
+                    <li><a href="${pageContext.request.contextPath}/search/sort?sort=2">由高到低</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
             <c:forEach items="${results}" var="light">
         <div class="product-grid">
             <a>
@@ -100,12 +111,14 @@
             </div>
         </div>
             </c:forEach>
+
         </div>
+
         <div class="rsidebar span_1_of_left">
             <form class="form-inline" action="${pageContext.request.contextPath}/search/submit">
             <section  class="sky-form">
 
-                    <input type="text" class="form-control" placeholder="搜索" name="flag">
+                    <input type="text" class="form-control" placeholder="搜索:${flag}" name="flag">
                     <button class="btn btn-default" type="submit">查找</button>
 
             </section>
@@ -206,7 +219,7 @@
                     <div class="col col-4">
                         <c:forEach items="${Brands}" var="Brand">
                             <c:if test="${BrandSelect[Brand.brandId] eq 0}">
-                                    <label class="checkbox"><input type="checkbox" name="checkbox" value="${Brand.brandId}" ><i></i>${Brand.brandName}</label>
+                                    <label class="checkbox" title="选择品牌后要点查找才生效哦"><input type="checkbox" name="checkbox" value="${Brand.brandId}" ><i></i>${Brand.brandName}</label>
                             </c:if>
                             <c:if test="${BrandSelect[Brand.brandId] eq 1}">
                                 <label class="checkbox"><input type="checkbox" name="checkbox" value="${Brand.brandId}" checked=""><i></i>${Brand.brandName}</label>
@@ -228,6 +241,26 @@
             <!---->
         </div>
 </div>
+
+</div>
+<div style="margin-left: 50%" >
+    <c:if test="${pageMessage.totalPage>1}">
+        <ul class="pagination">
+            <li><a href="${pageContext.request.contextPath}/search/all?operate=&name=&id=&page=${pageMessage.currentPage-1}">&laquo;</a></li>
+        <c:forEach  begin="1" var="i" end="${pageMessage.totalPage}">
+          <c:choose>
+              <c:when test="${i == pageMessage.currentPage}">
+                  <li class="active"><a href="${pageContext.request.contextPath}/search/all?operate=&name=&id=&page=${i}">${i}</a></li>
+              </c:when>
+              <c:otherwise>
+                  <li ><a href="${pageContext.request.contextPath}/search/all?operate=&name=&id=&page=${i}">${i}</a></li>
+              </c:otherwise>
+          </c:choose>
+
+        </c:forEach>
+            <li><a href="${pageContext.request.contextPath}/search/all?operate=&name=&id=&page=${pageMessage.currentPage+1}">&raquo;</a></li>
+        </ul>
+    </c:if>
 </div>
 </body>
 </html>

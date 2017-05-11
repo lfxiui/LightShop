@@ -3,6 +3,7 @@ package com.controller;
 import com.dao.PageDao;
 import com.service.PageService;
 import com.service.SearchService;
+import com.tools.PageMessage;
 import org.hibernate.boot.jaxb.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -23,27 +24,36 @@ import java.util.*;
 @RequestMapping("/search")
 public class SearchController {
     private final SearchService searchService;
-    private final PageService pageService;
 
     @Autowired
-    public SearchController(SearchService searchService, PageService pageService) {
+    public SearchController(SearchService searchService) {
         this.searchService = searchService;
-        this.pageService = pageService;
+
     }
 
     @RequestMapping("")
     public ModelAndView search(){
         ModelAndView mv=new ModelAndView();
+        PageMessage pageMessage=searchService.getLights(2,1);
+        mv.addObject("results",pageMessage.getList());
+        pageMessage.setList(null);
+        mv.addObject("pageMessage",pageMessage);
         mv.setViewName("search");
         return  mv;
     }
     @RequestMapping("/all")
-    public ModelAndView searchAll(String operate, String name, Integer id, HttpSession session){
+    public ModelAndView searchAll(String operate, String name, Integer id,Integer page, HttpSession session){
         ModelAndView mv=new ModelAndView();
+        String flag="";
+        if(page!=null)
+            flag=(String)session.getAttribute("flag");
+
+        else{
+        session.setAttribute("flag",flag);
+        page=1;}
         HashMap map=(HashMap) session.getAttribute("map");
         HashMap<Integer,Integer> BrandSelect= (HashMap<Integer,Integer>) session.getAttribute("BrandSelect");
         List<Integer> checkbox=new ArrayList<Integer>();
-        int i=0;
         for(Integer key:BrandSelect.keySet()){
             if(BrandSelect.get(key)==1){
                 checkbox.add(key);
@@ -51,18 +61,25 @@ public class SearchController {
         }
        if(operate.equals("delete"))
            map.remove(name);
-       else {
+       else if(operate.equals("add")){
            map.put(name,id);
        }
-       mv.addObject("results",searchService.getLightsByAll(map,checkbox));
+       PageMessage pageMessage=searchService.getLightsByAll(map,checkbox,2,page,flag);
+       mv.addObject("results",pageMessage.getList());
+       pageMessage.setList(null);
+       mv.addObject("pageMessage",pageMessage);
        mv.setViewName("search");
         return mv;
     }
     @RequestMapping("/submit")
     public ModelAndView submit(@RequestParam(value = "checkbox",required = false) Integer[] checkbox,String flag,HttpSession session){
         ModelAndView mv=new ModelAndView();
+        session.setAttribute("flag",flag);
         HashMap map=(HashMap) session.getAttribute("map");
-        mv.addObject("results",searchService.getLightsByFrom(map,flag,checkbox));
+        PageMessage pageMessage=searchService.getLightsByFrom(map,flag,checkbox,2,1);
+        mv.addObject("results",pageMessage.getList());
+        pageMessage.setList(null);
+        mv.addObject("pageMessage",pageMessage);
         mv.setViewName("search");
         return mv;
     }
@@ -70,6 +87,7 @@ public class SearchController {
     @ResponseBody
     public String select(Integer id,String operate,HttpSession session){
         HashMap BrandSelect =(HashMap) session.getAttribute("BrandSelect");
+        session.setAttribute("flag","");
         if(operate.equals("delete"))
             BrandSelect.put(id,0);
         else BrandSelect.put(id,1);
@@ -78,8 +96,53 @@ public class SearchController {
     @RequestMapping("/type")
     public ModelAndView type(String name,Integer id){
         ModelAndView mv=new ModelAndView();
-        mv.addObject("results",searchService.getLightsByType(name,id));
+        PageMessage pageMessage=searchService.getLightsByType(name,id,2,1);
+        mv.addObject("results",pageMessage.getList());
+        pageMessage.setList(null);
+        mv.addObject("pageMessage",pageMessage);
         mv.setViewName("search");
         return  mv;
+    }
+    @RequestMapping("/sort")
+    public ModelAndView sort(HttpSession session,Integer sort){
+        ModelAndView mv=new ModelAndView();
+        mv.setViewName("search");
+        HashMap map=(HashMap) session.getAttribute("map");
+        HashMap<Integer,Integer> BrandSelect= (HashMap<Integer,Integer>) session.getAttribute("BrandSelect");
+        List<Integer> checkbox=new ArrayList<Integer>();
+        for(Integer key:BrandSelect.keySet()){
+            if(BrandSelect.get(key)==1){
+                checkbox.add(key);
+            }
+        }
+        PageMessage pageMessage;
+        if(sort==1)
+        { pageMessage=searchService.getLightBySort1(map,checkbox,(String) session.getAttribute("flag"),2,1);
+           mv.addObject("results",pageMessage.getList());
+           pageMessage.setList(null);
+           mv.addObject("pageMessage",pageMessage);
+        }
+        if(sort==2){
+            pageMessage=searchService.getLightBySort2(map,checkbox,(String) session.getAttribute("flag"),2,1);
+            mv.addObject("results",pageMessage.getList());
+            pageMessage.setList(null);
+            mv.addObject("pageMessage",pageMessage);
+        }
+
+        if(sort==3){
+            pageMessage=searchService.getLightBySort3(map,checkbox,(String) session.getAttribute("flag"),2,1);
+            mv.addObject("results",pageMessage.getList());
+            pageMessage.setList(null);
+            mv.addObject("pageMessage",pageMessage);
+        }
+
+        if(sort==4)
+        {
+            pageMessage=searchService.getLightBySort4(map,checkbox,(String) session.getAttribute("flag"),2,1);
+            mv.addObject("results",pageMessage.getList());
+            pageMessage.setList(null);
+            mv.addObject("pageMessage",pageMessage);
+        }
+        return mv;
     }
 }
