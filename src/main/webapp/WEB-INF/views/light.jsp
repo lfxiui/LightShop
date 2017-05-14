@@ -20,7 +20,7 @@
     <link href="${pageContext.request.contextPath}/fonts/FontAwesome/font-awesome.css" rel="stylesheet">
     <!-- js -->
     <script src="${pageContext.request.contextPath}/js/jquery-1.11.0.min.js"></script>
-    <script  src="${pageContext.servletContext.contextPath}/js/bootstrap-3.1.1.min.js"></script>
+    <script src="${pageContext.servletContext.contextPath}/js/bootstrap-3.1.1.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootsnav.js"></script>
     <!-- //js -->
     <!-- for bootstrap working -->
@@ -63,19 +63,21 @@
             <!-- //zooming-effect -->
         </div>
         <div class="col-md-8 single-right">
-            <h3>小仙女闪闪发亮灯饰</h3>
-            <!--<span>${light.brandByBrandId.brandName}</span><span>${light.stryleByStyleId.styleName}</span><span>${light.catagoryByCatagoryId.catagoryName}</span> -->
+            <h3>${light.name}</h3>
             <div class="description">
-                <h5>材质：</h5>
-                <p>${light.stuff}</p>
+                <h5>材质：<span>${light.stuffByStuffId.stuffName}</span></h5>
             </div>
             <div class="description">
-                <h5>颜色：</h5>
-                <p>${light.color}</p>
+                <h5>品牌：<span>${light.brandByBrandId.brandName}</span></h5>
+
             </div>
             <div class="description">
-                <h5>安放位置：</h5>
-                <p>${light.locate}</p>
+                <h5>种类：<span>${light.catagoryByCatagoryId.catagoryName}</span></h5>
+
+            </div>
+            <div class="description">
+                <h5>安放位置：<span>${light.locateByLocateId.name}</span></h5>
+
             </div>
             <div class="color-quality">
 
@@ -84,19 +86,88 @@
                     <div class="quantity">
                         <div class="quantity-select">
                             <div class="entry value-minus1">&nbsp;</div>
-                            <input type="text" id="quantity" name="quantity" size=2 value=1 />
+                            <input type="text" id="quantity" name="quantity" style="height: 40px;width: 40px;" value="1" />
                             <div class="entry value-plus1 active">&nbsp;</div>
-                            <small style="color: #098dff;">(库存：${light.quantity})</small>
+                            <small style="color: #098dff;" id="qu">(库存：${light.quantity})</small>
                         </div>
                     </div>
                     <!--quantity-->
                     <script>
+                        $('#quantity').keyup(function () {
+                            var quantity = $(this);
+                            var num = quantity.val();
+                            var val = parseInt(quantity.val());
+                            if (isNaN(num) || (val < 1)) { quantity.val("1"); }
+                            $.ajax({
+                                url: '${pageContext.servletContext.contextPath}/myshopcart/getQuantity?lightId='+'${light.lightId}'+'&id='+<%=Math.random()%>, //所需要的列表接口地址
+                                success : function(data,status) {
+                                    if (status == "success") {
+                                        var quantity2 = parseInt(data);
+                                        if (val > quantity2) {
+                                            alert("库存不足："+val+"！当前最大库存为："+quantity2)
+                                            quantity.val(quantity2);
+                                            $("#qu").text("(库存:"+quantity2+")");
+                                        }
+                                    }else {
+                                        alert("商品不存在或已删除")
+                                    }
+                                }
+                            });
+                        });
+                        
                         $('.value-plus1').on('click', function(){
-                            if(Number($('#quantity').val())<${light.quantity}) $('#quantity').val(Number($('#quantity').val())+1);
+                            var quantity = $('#quantity');
+                            var num = quantity.val();
+                            var val = parseInt(quantity.val());
+                            if (isNaN(num) || (val < 1)) { quantity.val("1"); }
+                            $.ajax({
+                                url: '${pageContext.servletContext.contextPath}/myshopcart/getQuantity?lightId='+'${light.lightId}'+'&id='+<%=Math.random()%>, //所需要的列表接口地址
+                                success : function(data,status) {
+                                    if (status == "success") {
+                                        var quantity2 = parseInt(data);
+                                        if (val < quantity2) val++;
+                                        else {
+                                            alert("库存不足："+val+"！当前最大库存为："+quantity2)
+                                            quantity.val(quantity2);
+                                            $("#qu").text("(库存:"+quantity2+")");
+                                        }
+                                        quantity.val(val);
+                                        if (val > quantity2) {
+                                            alert("库存不足："+val+"！当前最大库存为："+quantity2)
+                                            quantity.val(quantity2);
+                                            $("#qu").text("(库存:"+quantity2+")");
+                                        }
+                                    }else {
+                                        alert("商品不存在或已删除")
+                                    }
+                                }
+                            });
+                            //if(($('#quantity').val())<${light.quantity}) $('#quantity').val(Number($('#quantity').val())+1);
                         });
 
                         $('.value-minus1').on('click', function(){
-                            if(Number($('#quantity').val())>1) $('#quantity').val(Number($('#quantity').val())-1);;
+                            var quantity = $('#quantity');
+                            var num = quantity.val();
+                            var val = parseInt(quantity.val());
+                            if (isNaN(num) || (val < 1)) { quantity.val("1"); }
+                            $.ajax({
+                                url: '${pageContext.servletContext.contextPath}/myshopcart/getQuantity?lightId='+'${light.lightId}'+'&id='+<%=Math.random()%>, //所需要的列表接口地址
+                                success : function(data,status) {
+                                    if (status == "success") {
+                                        var quantity2 = parseInt(data);
+                                        if (val > 1) val--;
+                                        quantity.val(val);
+                                        if (val > quantity2) {
+                                            alert("库存不足："+val+"！当前最大库存为："+quantity2)
+                                            quantity.val(quantity2);
+                                            $("#qu").text("(库存:"+quantity2+")");
+                                        }
+                                    }else {
+                                        alert("商品不存在或已删除")
+                                    }
+                                }
+                            });
+                            //if(Number($('#quantity').val())>1) $('#quantity').val(Number($('#quantity').val())-1);;
                         });
                     </script>
                     <!--quantity-->
@@ -104,15 +175,42 @@
                 </div>
                 <div class="clearfix"> </div>
             </div>
+            <div class="description">
+                <h5>单价：</h5>
+            </div>
             <div class="simpleCart_shelfItem">
-                <p><i class="item_price">￥${light.price}</i></p>
+                <p><span>￥${light.price}</span><i class="item_price">￥${light.price*light.discount}</i></p>
                 <form action="#" method="post">
-                    <input type="hidden" name="cmd" value="_cart">
-                    <input type="hidden" name="add" value="1">
-                    <input type="hidden" name="w3ls_item" value="Smart Phone">
-                    <input type="hidden" name="amount" value="450.00">
-                    <button type="submit" class="w3ls-cart">加入购物车</button>
+                    <button type="button" class="w3ls-cart">加入购物车</button>
+                    <button type="button" class="w3ls-wishlist">加入收藏夹</button>
+                    <button type="button" class="w3ls-count">去结算</button>
                 </form>
+                <!--加入购物车add to myshopcart-->
+                <script>
+                    $('.w3ls-cart').on('click', function() {
+                        $.ajax({
+                            url: '${pageContext.servletContext.contextPath}/myshopcart/addToCart?lightId='+'${light.lightId}'+'&quantity='+parseInt($('#quantity').val()), //所需要的列表接口地址
+                            success : function(data,status) {
+                                if (status == "success") {
+                                    if(data == "success"){
+                                        alert("成功加入购物车");
+                                    }else {
+                                        $('#quantity').val(parseInt(data));
+                                        $("#qu").text("(库存:"+data+")");
+                                        alert("库存不足,加入购物车失败");
+                                    }
+                                }else {
+                                    alert("商品不存在或已删除")
+                                }
+                            }
+                        });
+                    })
+
+                    $('.w3ls-count').on('click', function() {
+                        window.location.href = "${pageContext.servletContext.contextPath}/myshopcart/showMyShopCart";
+                    })
+                </script>
+                <!--加入购物车add to myshopcart-->
             </div>
         </div>
         <div class="clearfix"> </div>
@@ -127,7 +225,7 @@
                     <li class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>买家评价</span></li>
                 </ul>
                 <div class="tab-1 resp-tab-content additional_info_grid" aria-labelledby="tab_item-0">
-                    <h3>小仙女闪闪发亮灯饰</h3>
+                    <h3>${light.name}</h3>
                     <p>${light.description}</p>
                 </div>
 
@@ -170,6 +268,46 @@
         </script>
     </div>
 </div>
-
+<div class="footer">
+    <div class="container">
+        <div class="footer-grids">
+            <div class="col-md-3 about-us">
+                <h3>About Us</h3>
+                <p>Maecenas nec auctor sem. Vivamus porttitor tincidunt elementum nisi a, euismod rhoncus urna. Curabitur scelerisque vulputate arcu eu pulvinar. Fusce vel neque diam</p>
+            </div>
+            <div class="col-md-3 ftr-grid">
+                <h3>Information</h3>
+                <ul class="nav-bottom">
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">New Products</a></li>
+                    <li><a href="#">Location</a></li>
+                    <li><a href="#">Our Stores</a></li>
+                    <li><a href="#">Best Sellers</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 ftr-grid">
+                <h3>More Info</h3>
+                <ul class="nav-bottom">
+                    <li><a href="login.html">Login</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#">Shipping</a></li>
+                    <li><a href="#">Membership</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 ftr-grid">
+                <h3>Categories</h3>
+                <ul class="nav-bottom">
+                    <li><a href="#">Car Lights</a></li>
+                    <li><a href="#">LED Lights</a></li>
+                    <li><a href="#">Decorates</a></li>
+                    <li><a href="#">Wall Lights</a></li>
+                    <li><a href="#">Protectors</a></li>
+                </ul>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

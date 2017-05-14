@@ -32,9 +32,8 @@ public class LightController {
 
     //获取灯饰详情
     @RequestMapping("/lightInfo")
-    public String getLightById(Model model)
+    public String getLightById(Model model,int lightId)
     {
-        int lightId = 1;
         Light light = lightService.getLightById(lightId);
         model.addAttribute("light",light);
         model.addAttribute("comments",light.getCommentsByLightId());
