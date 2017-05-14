@@ -387,6 +387,8 @@ p.sbmincart-empty-text {
 .agile_ecommerce_tab_left p i{
 	font-style:normal;
 }
+.simpleCart_shelfItem button.w3ls-wishlist,
+.simpleCart_shelfItem button.w3ls-count,
 .simpleCart_shelfItem button.w3ls-cart {
     font-size: 14px;
     color: #000;
@@ -402,6 +404,8 @@ p.sbmincart-empty-text {
 	-moz-transition:.5s all;
 	transition:.5s all;
 }
+.simpleCart_shelfItem button.w3ls-wishlist:hover,
+.simpleCart_shelfItem button.w3ls-count:hover,
 .simpleCart_shelfItem button.w3ls-cart:hover{
 	background:#3c43a4;
 	color:#fff;
@@ -2383,7 +2387,7 @@ h2.typoh2{
     font-size: 1em;
     margin: 0;
 }
-.description p{
+.description span{
 	color: #999;
     line-height: 1.8em;
     margin: 1em 0 0;

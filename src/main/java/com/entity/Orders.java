@@ -9,7 +9,7 @@ import java.util.Collection;
  */
 @Entity
 public class Orders {
-    private Integer ordersId;
+    private String ordersId;
     private Integer userId;
     private Integer totalPrice;
     private Timestamp date;
@@ -27,17 +27,17 @@ public class Orders {
     private Orderstates orderstatesByOrderStateId;
 
     @Id
-    @Column(name = "OrdersId", nullable = false, length = 18)
-    public Integer getOrdersId() {
+    @Column(name = "OrdersId", nullable = true, length = 18)
+    public String getOrdersId() {
         return ordersId;
     }
 
-    public void setOrdersId(Integer ordersId) {
+    public void setOrdersId(String ordersId) {
         this.ordersId = ordersId;
     }
 
     @Basic
-    @Column(name = "UserId", nullable = false)
+    @Column(name = "UserId", nullable = true)
     public Integer getUserId() {
         return userId;
     }
@@ -57,7 +57,7 @@ public class Orders {
     }
 
     @Basic
-    @Column(name = "Date", nullable = false)
+    @Column(name = "Date", nullable = true)
     public Timestamp getDate() {
         return date;
     }
