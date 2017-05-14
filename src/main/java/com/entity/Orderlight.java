@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 public class Orderlight {
     private Integer id;
-    private Integer orderId;
+    private String orderId;
     private Integer lightId;
     private Integer quantity;
     private Orders ordersByOrderId;
@@ -16,6 +16,7 @@ public class Orderlight {
 
     @Id
     @Column(name = "Id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId() {
         return id;
     }
@@ -26,11 +27,11 @@ public class Orderlight {
 
     @Basic
     @Column(name = "OrderId", nullable = false, length = 18)
-    public Integer getOrderId() {
+    public String getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(Integer orderId) {
+    public void setOrderId(String orderId) {
         this.orderId = orderId;
     }
 
