@@ -60,7 +60,7 @@
                 <td colspan="2" class="goods">
                     <input type="hidden" id="myShopCart" value="${shopCart.lightId}">
                     <label>
-                        <input type="checkbox" class="check-one check" name="checkbox" value="${shopCart.shopCartId}"/><button type="button" class="btn btn-link" href="${pageContext.servletContext.contextPath}/light/lightInfo?lightId=${shopCart.lightId}">${shopCart.lightByLightId.name}</button>
+                        <input type="checkbox" class="check-one check" name="checkbox" value="${shopCart.shopCartId}"/><a type="button" class="btn btn-link" href="${pageContext.servletContext.contextPath}/light/lightInfo?lightId=${shopCart.lightId}">${shopCart.lightByLightId.name}</a>
                     </label>
                 </td>
                 <td><img src="${pageContext.request.contextPath}/${shopCart.lightByLightId.image1}" height="100" width="100"/></td>
@@ -115,7 +115,7 @@
                 </table>
                 <input type="hidden" id="totalPrice" name="totalPrice" value="0">
                 <input type="hidden" name="postFee" value="10">
-                <p id="allMoney"></p><span>；快递费10元</span>
+                <p id="allMoney"></p><span>快递费10元</span>
             </div>
             <div class="form-group">
                 <label for="receiveName">收件人姓名</label>

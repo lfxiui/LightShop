@@ -22,8 +22,17 @@ public class OrderDAO {
         return sessionFactory.getCurrentSession();    }
 
     //获取所有订单
-    public List<Orders> getOrdersById(int userId){
-        return null;
+    public List<Orders> getOrdersById(int userId , int state){
+        if (state == 0){
+            return this.getSession().createQuery("from Orders where userId=?").setParameter(0,userId).list();
+        }else {
+            return this.getSession().createQuery("from Orders where userId=? and orderStateId=?").setParameter(0,userId).setParameter(1,state).list();
+        }
+    }
+
+    //获取订单信息
+    public Orders getOrderById(String orderId , int userId){
+        return (Orders) this.getSession().createQuery("from Orders where ordersId=? and userId=?").setParameter(0,orderId).setParameter(1,userId).uniqueResult();
     }
 
     //添加订单
