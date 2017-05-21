@@ -46,7 +46,7 @@ $(document).ready(function() {
             }
         });
         $("#allMoney").text("共计:"+$("#priceTotal").text()+"元");
-        $("#totalPrice").val(parseInt($("#priceTotal").text()));
+        $("#totalPrice").val($("#priceTotal").text());
     });
 
     var cartTable = $("#cartTable");

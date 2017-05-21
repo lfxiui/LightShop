@@ -11,7 +11,7 @@ import java.util.Collection;
 public class Orders {
     private String ordersId;
     private Integer userId;
-    private Integer totalPrice;
+    private Double totalPrice;
     private Timestamp date;
     private Integer orderStateId;
     private String receiveName;
@@ -48,11 +48,11 @@ public class Orders {
 
     @Basic
     @Column(name = "TotalPrice", nullable = false, precision = 0)
-    public Integer getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Integer totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
