@@ -68,9 +68,9 @@
                     style="padding-top: 1.1rem;" data-bind="${shopCart.lightByLightId.price*shopCart.lightByLightId.discount}">${shopCart.lightByLightId.price*shopCart.lightByLightId.discount}</td>
                 <td>
                     <div class="input-group input-group-sm">
-                        <span class="input-group-addon minus">-</span>
+                        <span class="input-group-addon minus" style="cursor: pointer">-</span>
                         <input type="text" class="number form-control input-sm" value="${shopCart.quantiy}" />
-                        <span class="input-group-addon plus">+</span>
+                        <span class="input-group-addon plus" style="cursor: pointer">+</span>
                     </div>
                 </td>
                 <td class="subtotal number small-bold-red text-right" style="padding-top: 1.1rem;"></td>

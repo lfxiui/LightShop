@@ -67,7 +67,7 @@
     <div class="items-sec">
         <c:forEach items="${lights}" var="light">
             <div class="col-md-3 feature-grid">
-                <a href="#">
+                <a href="${pageContext.request.contextPath}/light/lightInfo?lightId=${light.lightId}">
                     <img src="${pageContext.request.contextPath}/${light.image1}" alt="">
                     <div class="arrival-info">
                         <h4>${light.name}</h4>
