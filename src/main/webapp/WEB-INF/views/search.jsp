@@ -85,7 +85,7 @@
             <div class="clearfix"></div>
             <c:forEach items="${results}" var="light">
         <div class="product-grid">
-            <a>
+            <a href="${pageContext.request.contextPath}/light/lightInfo?lightId=${light.lightId}">
                 <div class="more-product"><span> </span></div>
                 <div class="product-img b-link-stripe b-animate-go  thickbox">
                     <img src="/${light.image1}" class="img-responsive" alt="">
@@ -104,7 +104,7 @@
                         <p class="pric1"><del>${light.price}</del></p>
                         <p class="disc">[12% Off]</p>
                     </div>
-                    <input type="text" class="item_quantity" value="1" />
+                    <input type="text" class="item_quantity" value="1"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
                     <input type="button" class="item_add items" value="ADD">
                     <div class="clearfix"> </div>
                 </div>
@@ -243,6 +243,7 @@
 </div>
 
 </div>
+<%--分页--%>
 <div style="margin-left: 50%" >
     <c:if test="${pageMessage.totalPage>1}">
         <ul class="pagination">

@@ -70,8 +70,7 @@
                 <i class="fa fa-bars"></i>
             </button>
             <a class="navbar-brand" href="#brand">
-                <img src="images/brand/logo-white.png" class="logo logo-display" alt="">
-                <img src="images/brand/logo-black.png" class="logo logo-scrolled" alt="">
+               <h3>这是一个LOGO</h3>
             </a>
         </div>
         <!-- End Header Navigation -->
@@ -153,7 +152,7 @@
                 <li><a href="#"><span class="fa fa-shopping-basket" aria-hidden="true"></span>订单</a></li>
                 <li><a href="#"><span class="fa fa-shopping-bag" aria-hidden="true"></span>购物车</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>收藏夹</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>我的信息</a></li>
+                <li><a href="${pageContext.request.contextPath}/user/info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>我的信息</a></li>
             </ul>
         </div>
         <div class="widget">
