@@ -17,8 +17,13 @@ public class OrderService {
     @Autowired
     OrderDAO orderDAO;
     //获取所有订单
-    public List<Orders> getOrdersById(int userId){
-        return orderDAO.getOrdersById(userId);
+    public List<Orders> getOrdersById(int userId,int state){
+        return orderDAO.getOrdersById(userId,state);
+    }
+
+    //获取订单信息
+    public Orders getOrderById(String orderId,int userId){
+        return orderDAO.getOrderById(orderId,userId);
     }
 
     //添加订单

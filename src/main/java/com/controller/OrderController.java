@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Fuxi on 2017/5/13.
@@ -27,9 +27,25 @@ public class OrderController {
     public String test(){
         return "newOrder";
     }
+
     //获取所有订单
-    public List<Orders> getOrdersById(int userId){
-        return null;
+    @RequestMapping("/getMyOrders")
+    public ModelAndView getOrdersById(int state){
+        int userId = 1 ;
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("myOrders",orderService.getOrdersById(userId,state));
+        modelAndView.addObject("state",state);
+        modelAndView.setViewName("myOrders");
+        return modelAndView;
+    }
+
+    @RequestMapping("/showMyOrder")
+    public ModelAndView showOrderById(String orderId){
+        int userId = 1 ;
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("myOrder",orderService.getOrderById(orderId,userId));
+        modelAndView.setViewName("showOrder");
+        return modelAndView;
     }
 
     //添加订单

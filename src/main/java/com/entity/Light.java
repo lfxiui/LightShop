@@ -12,7 +12,7 @@ public class Light {
     private Integer catagoryId;
     private Integer brandId;
     private Integer styleId;
-    private Integer price;
+    private Double price;
     private Integer quantity;
     private String description;
     private String image1;
@@ -77,11 +77,11 @@ public class Light {
 
     @Basic
     @Column(name = "Price", nullable = false, precision = 0)
-    public Integer getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Integer price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 
