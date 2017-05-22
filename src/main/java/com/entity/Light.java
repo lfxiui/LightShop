@@ -1,5 +1,7 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -7,6 +9,7 @@ import java.util.Collection;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@JsonIgnoreProperties({"commentsByLightId","catagoryByCatagoryId","brandByBrandId","styleByStyleId","stuffByStuffId","locateByLocateId","myshopcartsByLightId","orderlightsByLightId","wishlistsByLightId"})
 public class Light {
     private Integer lightId;
     private Integer catagoryId;

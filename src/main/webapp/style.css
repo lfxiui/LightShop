@@ -786,7 +786,7 @@ background-position:-167px -36px;
 	float:none;
 }
 .items{
-	margin:10px 0 0px 17px;
+	margin:10px 0 0px 0px;
 }
 .item_add:hover {
 	background:#ed645c;

@@ -178,6 +178,7 @@ $(document).ready(function() {
                             if (status == "success") {
                                 $(tr).remove();
                                 getTotal();
+                                loadcart();
                             } else {
                                 alert("删除失败");
                                 window.location.reload();
