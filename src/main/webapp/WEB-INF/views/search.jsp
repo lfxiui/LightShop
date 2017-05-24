@@ -30,10 +30,34 @@
         $(function () {
             $('.scroll-pane').jScrollPane();
         });
+        function loadcart(){
+            $.ajax({
+                url:"${pageContext.request.contextPath}/myshopcart/getCartList",
+                success:function (data) {
+                    var cart=$(".cart-list");
+                    $(".badge").text(data.length);
+                    var total=0;
+                    cart.empty();
+                    for(var i=0;i<data.length;i++){
+                        cart.append('<li>'+
+                            '<a href="/light/lightInfo?lightId='+data[i].lightId+'" class="photo"><img src="/'+data[i].lightByLightId.image1+'" class="cart-thumb" alt="" /></a>'+
+                            '<h6><a href="/light/lightInfo?lightId='+data[i].lightId+'">'+data[i].lightByLightId.name +'</a></h6>'+
+                            '<p>'+data[i].quantiy+'X<span class="price">￥'+data[i].lightByLightId.price+'</span></p>'+
+                            '</li>');
+                        total=total+data[i].lightByLightId.price*data[i].quantiy;
+                    }
+                    cart.append('<li class="total">'+
+                        ' <span class="pull-right"><strong>总价</strong>: ￥'+total+'</span>'+
+                        '<a href="/myshopcart/showMyShopCart" class="btn btn-default btn-cart">购物车</a>'+
+                        '</li>')
+
+                }
+            })
+        }
     </script>
 </head>
 <jsp:include page="navigation.jsp"/>
-<body>
+<body onload="loadcart()">
 <div class="product-model">
     <div class="container">
         <ol class="breadcrumb">
@@ -70,7 +94,6 @@
                     </c:if>
                 </c:forEach></li>
         </ol>
-        <h2>产品列表</h2>
         <div class="col-md-9 product-model-sec">
             <div class="btn-group pull-left" role="group">
                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
@@ -85,13 +108,13 @@
             <div class="clearfix"></div>
             <c:forEach items="${results}" var="light">
         <div class="product-grid">
-            <a href="${pageContext.request.contextPath}/light/lightInfo?lightId=${light.lightId}">
+            <a href="${pageContext.request.contextPath}/light/lightInfo?lightId=${light.lightId}" target="_blank">
                 <div class="more-product"><span> </span></div>
                 <div class="product-img b-link-stripe b-animate-go  thickbox">
                     <img src="/${light.image1}" class="img-responsive" alt="">
                     <div class="b-wrapper">
                         <h4 class="b-animate b-from-left  b-delay03">
-                            <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>查看详情</button>
+                            <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="false"></span>查看详情</button>
                         </h4>
                     </div>
                 </div>
@@ -105,7 +128,7 @@
                         <p class="disc">[12% Off]</p>
                     </div>
                     <input type="text" class="item_quantity" value="1"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
-                    <input type="button" class="item_add items" value="ADD">
+                    <input type="button" class="item_add items" value="加入购物车" name="${light.lightId}">
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -113,6 +136,28 @@
             </c:forEach>
 
         </div>
+        <script>
+            $(document).ready(function () {
+                $(".item_add.items").click(function () {
+                   var quantity=$(this).parents('.product-info-cust.prt_name').find('.item_quantity').val();
+                    $.ajax({
+                        url: '${pageContext.servletContext.contextPath}/myshopcart/addToCart?lightId= '+$(this).attr('name')+'&quantity='+quantity, //所需要的列表接口地址
+                        success : function(data,status) {
+                            if (status == "success") {
+                                if(data == "success"){
+                                    alert("成功加入购物车");
+                                    loadcart();
+                                }else {
+                                    alert("库存不足,加入购物车失败");
+                                }
+                            }else {
+                                alert("商品不存在或已删除")
+                            }
+                        }
+                    });
+                })
+            })
+        </script>
 
         <div class="rsidebar span_1_of_left">
             <form class="form-inline" action="${pageContext.request.contextPath}/search/submit">

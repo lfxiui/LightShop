@@ -15,17 +15,6 @@
 <body>
 <nav class="navbar navbar-default  bootsnav">
 
-    <!-- Start Top Search -->
-        <div class="top-search">
-            <div class="container">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                </div>
-            </div>
-        </div>
-    <!-- End Top Search -->
 
     <div class="container">
         <!-- Start Atribute Navigation -->
@@ -43,7 +32,7 @@
                             <p>2x - <span class="price">$99.99</span></p>
                         </li>
                         <li>
-                            <a href="#" class="photo"><img src="images/thumb/thumb02.jpg" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="/images/img1.jpg" class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Omnes ocurreret</a></h6>
                             <p>1x - <span class="price">$33.33</span></p>
                         </li>
@@ -52,13 +41,12 @@
                             <h6><a href="#">Agam facilisis</a></h6>
                             <p>2x - <span class="price">$99.99</span></p>
                         </li>
-                        <li class="total">
+                        <li class="total" style="">
                             <span class="pull-right"><strong>Total</strong>: $0.00</span>
                             <a href="#" class="btn btn-default btn-cart">Cart</a>
                         </li>
                     </ul>
                 </li>
-                <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                 <li class="side-menu"><a href="#"><i class="fa fa-bars"></i></a></li>
             </ul>
         </div>
@@ -79,6 +67,7 @@
         <div class="collapse navbar-collapse" id="navbar-menu">
             <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                 <li><a href="${pageContext.request.contextPath}/index">首页</a></li>
+                <li><a href="${pageContext.request.contextPath}/search/">搜索</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" >品牌</a>
                     <ul class="dropdown-menu">
@@ -149,8 +138,8 @@
         <div class="widget">
             <h6 class="title"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> 个人信息</h6>
             <ul class="link">
-                <li><a href="#"><span class="fa fa-shopping-basket" aria-hidden="true"></span>订单</a></li>
-                <li><a href="#"><span class="fa fa-shopping-bag" aria-hidden="true"></span>购物车</a></li>
+                <li><a href="${pageContext.request.contextPath}/order/getMyOrders?state=0"><span class="fa fa-shopping-basket" aria-hidden="true"></span>订单</a></li>
+                <li><a href="${pageContext.request.contextPath}/myshopcart/showMyShopCart"><span class="fa fa-shopping-bag" aria-hidden="true"></span>购物车</a></li>
                 <li><a href="#"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>收藏夹</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>我的信息</a></li>
             </ul>

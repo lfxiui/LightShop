@@ -1,5 +1,8 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -14,6 +17,7 @@ public class Myshopcart {
     private Timestamp addDate;
     private Integer quantiy;
     private Light lightByLightId;
+    @JsonIgnore
     private User userByUserId;
 
     @Id

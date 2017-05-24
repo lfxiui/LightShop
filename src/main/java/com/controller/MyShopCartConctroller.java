@@ -1,11 +1,14 @@
 package com.controller;
 
+import com.entity.Myshopcart;
 import com.service.MyShopCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
 
 /**
  * Created by Fuxi on 2017/5/6.
@@ -61,5 +64,10 @@ public class MyShopCartConctroller {
     public String deleteLightById(int lightId){
         myShopCartService.deleteLightById(userId,lightId);
         return "success";
+    }
+    @RequestMapping("/getCartList")
+    @ResponseBody
+    public List<Myshopcart> getCartList(){
+        return myShopCartService.getMyShopCartById(userId);
     }
 }
