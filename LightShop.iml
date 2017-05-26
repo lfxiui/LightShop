@@ -87,5 +87,9 @@
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.3.6.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: tomcat:servlet:4.1.36" level="project" />
+    <orderEntry type="library" name="bootstrap-table" level="application" />
+    <orderEntry type="library" name="bootstrap-table-editable" level="application" />
+    <orderEntry type="library" name="bootstrap-editable" level="application" />
+    <orderEntry type="library" name="bootstrap-table-zh-CN" level="application" />
   </component>
 </module>
