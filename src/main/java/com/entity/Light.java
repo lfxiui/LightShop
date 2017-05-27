@@ -1,5 +1,6 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -9,7 +10,7 @@ import java.util.Collection;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
-@JsonIgnoreProperties({"commentsByLightId","catagoryByCatagoryId","brandByBrandId","styleByStyleId","stuffByStuffId","locateByLocateId","myshopcartsByLightId","orderlightsByLightId","wishlistsByLightId"})
+@JsonIgnoreProperties({"commentsByLightId","myshopcartsByLightId","orderlightsByLightId","wishlistsByLightId"})
 public class Light {
     private Integer lightId;
     private Integer catagoryId;
@@ -267,7 +268,7 @@ public class Light {
         this.commentsByLightId = commentsByLightId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CatagoryId", referencedColumnName = "CatagoryId", nullable = false,insertable = false,updatable = false)
     public Catagory getCatagoryByCatagoryId() {
         return catagoryByCatagoryId;
@@ -277,7 +278,7 @@ public class Light {
         this.catagoryByCatagoryId = catagoryByCatagoryId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "BrandId", referencedColumnName = "BrandId", nullable = false,insertable = false,updatable = false)
     public Brand getBrandByBrandId() {
         return brandByBrandId;
@@ -287,7 +288,7 @@ public class Light {
         this.brandByBrandId = brandByBrandId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "StyleId", referencedColumnName = "StyleId", nullable = false,insertable = false,updatable = false)
     public Style getStyleByStyleId() {
         return styleByStyleId;
@@ -297,7 +298,7 @@ public class Light {
         this.styleByStyleId = styleByStyleId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "StuffId", referencedColumnName = "StuffId", nullable = false,insertable = false,updatable = false)
     public Stuff getStuffByStuffId() {
         return stuffByStuffId;
@@ -307,7 +308,7 @@ public class Light {
         this.stuffByStuffId = stuffByStuffId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "LocateId", referencedColumnName = "LocateId", nullable = false,insertable = false,updatable = false)
     public Locate getLocateByLocateId() {
         return locateByLocateId;

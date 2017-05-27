@@ -20,8 +20,8 @@ public class LightService {
 
     //获取所有灯饰
     public List<Light> getLights(){
+       return lightDAO.getLights();
 
-        return null;
     }
 
     //获取灯饰详情

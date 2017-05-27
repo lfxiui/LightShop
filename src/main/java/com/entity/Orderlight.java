@@ -79,7 +79,7 @@ public class Orderlight {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "OrderId", referencedColumnName = "OrdersId", nullable = false,insertable = false,updatable = false)
     public Orders getOrdersByOrderId() {
         return ordersByOrderId;
@@ -89,7 +89,7 @@ public class Orderlight {
         this.ordersByOrderId = ordersByOrderId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "LightId", referencedColumnName = "LightId", nullable = false,insertable = false,updatable = false)
     public Light getLightByLightId() {
         return lightByLightId;
