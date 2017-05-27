@@ -1,5 +1,8 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -8,6 +11,7 @@ import java.util.Collection;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@JsonIgnoreProperties({"commentsByUserId","myshopcartsByUserId","ordersByUserId","userrolesByUserRoleId","userstatesByUserStateId","wishlistsByUserId"})
 public class User {
     private Integer userId;
     private String userName;

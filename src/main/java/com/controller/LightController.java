@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -25,9 +26,10 @@ public class LightController {
     }
 
     //获取所有灯饰
+    @RequestMapping("/getLights")
+    @ResponseBody
     public List<Light> getLights(){
-
-        return null;
+      return  lightService.getLights();
     }
 
     //获取灯饰详情
@@ -54,5 +56,9 @@ public class LightController {
     //修改灯饰
     public void updateLight(Light light){
 
+    }
+    @RequestMapping("/lightA")
+    public String lightA(){
+        return "lightA";
     }
 }

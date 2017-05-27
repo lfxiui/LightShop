@@ -1,5 +1,7 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -10,6 +12,7 @@ import java.util.Collection;
 public class Style {
     private Integer styleId;
     private String styleName;
+    @JsonIgnore
     private Collection<Light> lightsByStyleId;
 
     @Id

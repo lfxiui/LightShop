@@ -11,7 +11,7 @@
 <head>
     <title>我的订单</title>
     <script type="text/javascript" src="${pageContext.servletContext.contextPath}/js/shopCartJS/jquery-1.11.min.js"></script>
-    <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet"/>
     <script src="${pageContext.servletContext.contextPath}/js/bootstrap.min.js"></script>
     <!-- 导航-->
     <script src="${pageContext.request.contextPath}/js/bootsnav.js"></script>
