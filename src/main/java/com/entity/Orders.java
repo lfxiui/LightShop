@@ -1,7 +1,5 @@
 package com.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -24,10 +22,8 @@ public class Orders {
     private String postType;
     private String paymentType;
     private Integer postFee;
-    @JsonIgnore
     private Collection<Orderlight> orderlightsByOrdersId;
     private User userByUserId;
-    @JsonIgnore
     private Orderstates orderstatesByOrderStateId;
 
     @Id

@@ -1,5 +1,7 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 /**
@@ -11,6 +13,7 @@ public class Orderlight {
     private String orderId;
     private Integer lightId;
     private Integer quantity;
+    @JsonIgnore
     private Orders ordersByOrderId;
     private Light lightByLightId;
 

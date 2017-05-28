@@ -3,6 +3,7 @@ package com.dao;
 import com.entity.Myshopcart;
 import com.entity.Orderlight;
 import com.entity.Orders;
+import com.entity.Orderstates;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -51,4 +52,29 @@ public class OrderDAO {
         this.getSession().delete(myshopcart);
     }
 
+    //订单管理-获取订单list
+    public List<Orders> ordersList(){
+        return this.getSession().createQuery("from Orders").list();
+    }
+
+    //订单状态list
+    public List<Orderstates> orderstatesList(){
+        return this.getSession().createQuery("from Orderstates").list();
+    }
+
+    public void updateOrders(Orders orders){
+        this.getSession().update(orders);
+    }
+
+    public void addOrderStates(Orderstates orderstates){
+        this.getSession().save(orderstates);
+    }
+
+    public void deleteOrderStates(Orderstates orderstates){
+        this.getSession().delete(orderstates);
+    }
+
+    public void updateOrderStates(Orderstates orderstates){
+        this.getSession().update(orderstates);
+    }
 }
