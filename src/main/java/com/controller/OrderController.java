@@ -22,12 +22,6 @@ public class OrderController {
     @Autowired
     OrderService orderService;
 
-    //test
-    @RequestMapping("/test")
-    public String test(){
-        return "newOrder";
-    }
-
     //获取所有订单
     @RequestMapping("/getMyOrders")
     public ModelAndView getOrdersById(int state){

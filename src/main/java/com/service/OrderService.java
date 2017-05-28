@@ -2,6 +2,7 @@ package com.service;
 
 import com.dao.OrderDAO;
 import com.entity.Orders;
+import com.entity.Orderstates;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,5 +35,27 @@ public class OrderService {
     //订单中的商品
     public void addOrderLight(String orderId, int myshopcartId){
         orderDAO.addOrderLight(orderId,myshopcartId);
+    }
+
+    public List<Orders> ordersList(){
+        return orderDAO.ordersList();
+    }
+
+    //订单状态list
+    public List<Orderstates> orderstatesList(){
+        return orderDAO.orderstatesList();
+    }
+
+    public void updateOrders(Orders orders){
+        orderDAO.updateOrders(orders);
+    }
+    public void addOrderStates(Orderstates orderstates){
+        orderDAO.addOrderStates(orderstates);
+    }
+    public void deleteOrderStates(Orderstates orderstates){
+        orderDAO.deleteOrderStates(orderstates);
+    }
+    public void updateOrderStates(Orderstates orderstates){
+        orderDAO.updateOrderStates(orderstates);
     }
 }

@@ -21,6 +21,12 @@
                 <li class="list-group-item"><a href="" >光源类型</a></li>
             </ul>
         </li>
+        <li><a href="#demo2" aria-expanded="false"  aria-controls="demo" data-toggle="collapse"  >订单管理<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
+            <ul class="list-group collapse" id="demo2" style="margin-left: 30px">
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/ordersManager/show" >查看订单</a></li>
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/ordersManager/orderStates" >订单状态管理</a></li>
+            </ul>
+        </li>
         <li><a href="" >用户管理</a></li>
 
     </ul>
