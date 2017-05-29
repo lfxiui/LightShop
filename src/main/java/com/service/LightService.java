@@ -31,16 +31,29 @@ public class LightService {
 
     //增加灯饰
     public void addLight(Light light){
-
+        light.setClick(0);
+        light.setSale(0);
+        light.setStore(0);
+        lightDAO.addLight(light);
     }
 
     //删除灯饰
     public void deleteLightById(int lightId){
-
+            lightDAO.deleteLightById(lightId);
     }
 
     //修改灯饰
     public void updateLight(Light light){
-
+        lightDAO.updateLight(light);
+    }
+    public void updatePhoto(Integer imageNumber,Integer lightId,String path){
+        Light light=this.getLightById(lightId);
+        if(imageNumber==1)
+            light.setImage1(path);
+        else if(imageNumber==2)
+            light.setImage2(path);
+        else if(imageNumber==3)
+            light.setImage3(path);
+        this.updateLight(light);
     }
 }

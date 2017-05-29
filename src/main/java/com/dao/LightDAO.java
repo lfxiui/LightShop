@@ -32,16 +32,16 @@ public class LightDAO {
 
     //增加灯饰
     public void addLight(Light light){
-
+            this.getSession().save(light);
     }
 
     //删除灯饰
     public void deleteLightById(int lightId){
-
+            this.getSession().delete(getLightById(lightId));
     }
 
     //修改灯饰
     public void updateLight(Light light){
-
+        this.getSession().update(light);
     }
 }

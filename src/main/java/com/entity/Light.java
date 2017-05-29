@@ -2,6 +2,7 @@ package com.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -10,6 +11,7 @@ import java.util.Collection;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@DynamicUpdate
 @JsonIgnoreProperties({"commentsByLightId","myshopcartsByLightId","orderlightsByLightId","wishlistsByLightId"})
 public class Light {
     private Integer lightId;
@@ -41,6 +43,7 @@ public class Light {
 
     @Id
     @Column(name = "LightId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getLightId() {
         return lightId;
     }
@@ -170,7 +173,7 @@ public class Light {
     }
 
     @Basic
-    @Column(name = "Discount", nullable = false, precision = 0)
+    @Column(name = "Discount", nullable = false)
     public Double getDiscount() {
         return discount;
     }
@@ -180,7 +183,7 @@ public class Light {
     }
 
     @Basic
-    @Column(name = "Click", nullable = false)
+    @Column(name = "Click")
     public Integer getClick() {
         return click;
     }
@@ -190,7 +193,7 @@ public class Light {
     }
 
     @Basic
-    @Column(name = "Sale", nullable = false)
+    @Column(name = "Sale")
     public Integer getSale() {
         return sale;
     }
@@ -200,7 +203,7 @@ public class Light {
     }
 
     @Basic
-    @Column(name = "Store", nullable = false)
+    @Column(name = "Store")
     public Integer getStore() {
         return store;
     }

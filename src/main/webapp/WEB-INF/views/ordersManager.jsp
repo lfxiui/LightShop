@@ -112,9 +112,9 @@
                 div.append('<p>实际支付(元)：'+row.totalPrice+'</p>');
                 var table = $('#modalTable');
                 table.empty();
-                table.append('<thead> <tr> <th>商品</th> <th>单价(元)</th> <th>数量</th> <th>小计（元）</th> </tr> </thead>');
+                table.append('<thead> <tr><th>商品</th> <th>单价(元)</th> <th>数量</th> <th>小计（元）</th> </tr> </thead>');
                 $.each(row.orderlightsByOrdersId, function (key, value) {
-                    table.append('<tbody> <tr> <td><a href="${pageContext.request.contextPath}/light/lightInfo?lightId='+value.lightId+'"><img height="80px" width="80px" src="${pageContext.request.contextPath}/'+value.lightByLightId.image1+'"></a> <a type="button" class="btn btn-link" href="${pageContext.request.contextPath}/light/lightInfo?lightId='+value.lightId+'">'+value.lightByLightId.name+'</a> </td> <td>'+value.lightByLightId.price*value.lightByLightId.discount*1.00+'</td> <td>'+value.quantity+'</td> <td>'+value.lightByLightId.price*value.lightByLightId.discount*value.quantity*1.00+'</td> </tr> </tbody>');
+                    table.append('<tbody> <tr> <td><a href="${pageContext.request.contextPath}/light/lightInfo?lightId='+value.lightId+'" target="_blank"><img height="80px" width="80px" src="${pageContext.request.contextPath}/'+value.lightByLightId.image1+'"></a> <a type="button" class="btn btn-link" href="${pageContext.request.contextPath}/light/lightInfo?lightId='+value.lightId+'" target="_blank">'+value.lightByLightId.name+'</a> </td> <td>'+value.lightByLightId.price*value.lightByLightId.discount*1.00+'</td> <td>'+value.quantity+'</td> <td>'+value.lightByLightId.price*value.lightByLightId.discount*value.quantity*1.00+'</td> </tr> </tbody>');
                 });
 
                 $('#myModal').modal("show");
