@@ -1,13 +1,17 @@
 package com.controller;
 
 import com.entity.Light;
+import com.entity.Style;
 import com.service.LightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.xml.transform.Source;
 import java.util.List;
 
 /**
@@ -44,18 +48,26 @@ public class LightController {
     }
 
     //增加灯饰
-    public void addLight(Light light){
-
+    @RequestMapping("/addLight")
+    public String  addLight(Light light){
+        lightService.addLight(light);
+        return "lightA";
     }
 
     //删除灯饰
-    public void deleteLightById(int lightId){
-
+    @RequestMapping("/delete")
+    @ResponseBody
+    public String deleteLightById(int lightId){
+        lightService.deleteLightById(lightId);
+        return  "success";
     }
 
     //修改灯饰
-    public void updateLight(Light light){
-
+    @RequestMapping(value = "/update",method = RequestMethod.POST,consumes = "application/json")
+    @ResponseBody
+    public String updateLight(@RequestBody Light light){
+        lightService.updateLight(light);
+        return "success";
     }
     @RequestMapping("/lightA")
     public String lightA(){

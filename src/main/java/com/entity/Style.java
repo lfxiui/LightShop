@@ -12,7 +12,6 @@ import java.util.Collection;
 public class Style {
     private Integer styleId;
     private String styleName;
-    @JsonIgnore
     private Collection<Light> lightsByStyleId;
 
     @Id
@@ -56,6 +55,7 @@ public class Style {
     }
 
     @OneToMany(mappedBy = "styleByStyleId")
+    @JsonIgnore
     public Collection<Light> getLightsByStyleId() {
         return lightsByStyleId;
     }
