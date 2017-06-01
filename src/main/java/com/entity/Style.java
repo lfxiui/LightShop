@@ -16,6 +16,7 @@ public class Style {
 
     @Id
     @Column(name = "StyleId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getStyleId() {
         return styleId;
     }
