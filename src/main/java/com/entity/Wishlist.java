@@ -17,6 +17,7 @@ public class Wishlist {
 
     @Id
     @Column(name = "WishListId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getWishListId() {
         return wishListId;
     }
