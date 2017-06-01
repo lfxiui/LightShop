@@ -17,6 +17,7 @@ public class Stuff {
 
     @Id
     @Column(name = "StuffId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getStuffId() {
         return stuffId;
     }

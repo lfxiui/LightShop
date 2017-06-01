@@ -17,6 +17,7 @@ public class Locate {
 
     @Id
     @Column(name = "LocateId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getLocateId() {
         return locateId;
     }
