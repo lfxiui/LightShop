@@ -1,9 +1,6 @@
 package com.dao;
 
-import com.entity.Myshopcart;
-import com.entity.Orderlight;
-import com.entity.Orders;
-import com.entity.Orderstates;
+import com.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -48,7 +45,10 @@ public class OrderDAO {
         orderlight.setQuantity(myshopcart.getQuantiy());
         orderlight.setLightId(myshopcart.getLightId());
         orderlight.setOrderId(orderId);
+        Light light = myshopcart.getLightByLightId();
+        light.setSale(light.getSale() + myshopcart.getQuantiy());
         this.getSession().save(orderlight);
+        this.getSession().update(light);
         this.getSession().delete(myshopcart);
     }
 
