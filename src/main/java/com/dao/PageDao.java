@@ -36,6 +36,6 @@ public List<Catagory> getCatagorys(){
     return this.getSession().createQuery("from Catagory ").getResultList();
 }
 public  void updatePage(Page page){
-    this.getSession().update(page);
+    this.getSession().merge(page);
 }
 }

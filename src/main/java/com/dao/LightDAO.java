@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.entity.Light;
+import com.entity.Wishlist;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -75,6 +76,15 @@ public class LightDAO {
         if(a==null)
             return 0;
         else return a.intValue();
+    }
+    public void addWishList(Wishlist wishlist){
+        this.getSession().save(wishlist);
+       Light light= (Light) this.getSession().createQuery("from Light where lightId=?").setParameter(0,wishlist.getLightId()).uniqueResult();
+       light.setStore(light.getStore()+1);
+       this.getSession().merge(light);
+    }
+    public Wishlist checkWishList(int userId,int lightId){
+        return (Wishlist) this.getSession().createQuery("from Wishlist where userId=? and lightId=?").setParameter(0,userId).setParameter(1,lightId).uniqueResult();
     }
 }
 

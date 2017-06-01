@@ -33,7 +33,7 @@ public class MyShopCartConctroller {
     @ResponseBody
     public String addLight(int lightId,int quantity,HttpSession session){
         Integer userId= (Integer) session.getAttribute("userId");
-        return this.addLightToCart(userId,lightId,quantity);
+        return this.addLightToCart(lightId,quantity,userId);
     }
 
     //加入购物车的方法

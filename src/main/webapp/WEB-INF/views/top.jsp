@@ -15,9 +15,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><img  class="img-responsive" alt="Cinque Terre" src="${pageContext.servletContext.contextPath}${user.photo}" height="20px" width="30px"></li>
-                <li><a href="#">${user.employeeName}</a></li>
-                <li><a href="${pageContext.servletContext.contextPath}/out">退出登录</a></li>
+                <li><a href="#">用户ID:${userId}</a></li>
+                <li><a href="${pageContext.servletContext.contextPath}/login/out">退出登录</a></li>
             </ul>
         </div>
     </div>

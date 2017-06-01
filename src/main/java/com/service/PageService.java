@@ -78,7 +78,7 @@ public class PageService {
         pageDao.updatePage(page);
     }
     public void updatePage(Page page){
-        Page page1=this.getPage();
+        Page page1=pageDao.getPage();
         page.setEndSale1(page1.getEndSale1());
         page.setEndSale2(page1.getEndSale2());
         page.setCarouselImg3(page1.getCarouselImg3());
@@ -88,7 +88,7 @@ public class PageService {
         pageDao.updatePage(page);
     }
     public void updatePage1(Page page){
-        Page page1=this.getPage();
+        Page page1=pageDao.getPage();
         page1.setEndSale1(page.getEndSale1());
         page1.setEndSale1(page.getEndSale2());
         pageDao.updatePage(page);

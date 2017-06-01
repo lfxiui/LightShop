@@ -35,7 +35,7 @@ public class OrderDAO {
 
     //添加订单
     public void addOrder(Orders orders){
-        this.getSession().save(orders);
+         this.getSession().save(orders);
     }
 
     //订单中的商品
