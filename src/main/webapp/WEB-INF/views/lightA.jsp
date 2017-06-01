@@ -261,7 +261,7 @@
             </div>
             <div class="modal-body">
                 <h3 class="text-danger text-center">最多上传3张照片</h3>
-            <input id="input-file" type="file" multiple class="file-loading" name="file">
+            <input id="input-file" type="file" multiple class="file-loading" name="file" accept="image/*">
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
@@ -271,12 +271,12 @@
         })
         function upload(row){
             $("#input-file").fileinput({
-            language:'zh',
-            uploadUrl: "/file/fileUpload", // server upload action
-            uploadAsync: true,
-            uploadExtraData:{'lightId':row.lightId},
-            maxFileCount: 3,
-            allowedFileExtensions : ['jpg', 'png','gif'],
+                language:'zh',
+                uploadUrl: "/file/fileUpload", // server upload action
+                uploadAsync: true,
+                uploadExtraData:{'lightId':row.lightId},
+                maxFileCount: 3,
+                allowedFileExtensions: ["jpg", "png", "gif"]
 
         });
             $("#updatePhoto").modal('show');}

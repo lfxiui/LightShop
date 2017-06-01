@@ -91,5 +91,6 @@
     <orderEntry type="library" name="bootstrap-table-editable" level="application" />
     <orderEntry type="library" name="bootstrap-editable" level="application" />
     <orderEntry type="library" name="bootstrap-table-zh-CN" level="application" />
+    <orderEntry type="library" name="Chart" level="application" />
   </component>
 </module>

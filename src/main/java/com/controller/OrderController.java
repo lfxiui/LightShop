@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -24,8 +25,8 @@ public class OrderController {
 
     //获取所有订单
     @RequestMapping("/getMyOrders")
-    public ModelAndView getOrdersById(int state){
-        int userId = 1 ;
+    public ModelAndView getOrdersById(int state, HttpSession session){
+        Integer userId= (Integer) session.getAttribute("userId");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("myOrders",orderService.getOrdersById(userId,state));
         modelAndView.addObject("state",state);
@@ -34,8 +35,8 @@ public class OrderController {
     }
 
     @RequestMapping("/showMyOrder")
-    public ModelAndView showOrderById(String orderId){
-        int userId = 1 ;
+    public ModelAndView showOrderById(String orderId,HttpSession session){
+        Integer userId= (Integer) session.getAttribute("userId");
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("myOrder",orderService.getOrderById(orderId,userId));
         modelAndView.setViewName("showOrder");
@@ -44,8 +45,8 @@ public class OrderController {
 
     //添加订单
     @RequestMapping("/addOrder")
-    public String addOrder(@RequestParam(value = "checkbox") Integer[] checkbox, Orders orders,String s_province,String s_city,String s_county){
-        int userId = 1;
+    public String addOrder(@RequestParam(value = "checkbox") Integer[] checkbox, Orders orders,String s_province,String s_city,String s_county,HttpSession session){
+        Integer userId= (Integer) session.getAttribute("userId");
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
         String ordersId = df.format(new Date()) + String.valueOf(userId);
         orders.setOrdersId(ordersId);

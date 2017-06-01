@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Timestamp;
 import java.util.Date;
 
@@ -23,8 +24,8 @@ public class CommentsController {
     //添加评价
     @RequestMapping("/addComment")
     @ResponseBody
-    public String addComment(int lightId,String comments){
-        int userId = 1;
+    public String addComment(int lightId, String comments, HttpSession session){
+        Integer userId = (Integer) session.getAttribute("userId");
         Comments comment = new Comments();
         comment.setComments(comments);
         Date date = new Date();

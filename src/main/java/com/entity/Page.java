@@ -1,11 +1,17 @@
 package com.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.DynamicUpdate;
+
 import javax.persistence.*;
 
 /**
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@DynamicUpdate(true)
+@JsonIgnoreProperties({"lightByHotSale1","lightByHotSale2","lightByHotSale3","lightByHotSale4","lightByHotSale5","lightByHotSale6","lightByHotSale7","lightByHotSale8",
+"lightByEndSale1","lightByEndSale2"})
 public class Page {
     private Integer id;
     private Integer hotSale1;

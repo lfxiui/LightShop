@@ -24,4 +24,10 @@ public class UserDao {
         System.out.println(hql);
        return getSession().createQuery(hql).executeUpdate();
     }
+    public User getUserByLoginId(String loginId){
+        return (User) getSession().createQuery("from User where loginId=?").setParameter(0,loginId).uniqueResult();
+    }
+    public void update(User user){
+        this.getSession().update(user);
+    }
 }
