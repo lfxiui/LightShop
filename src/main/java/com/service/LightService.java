@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.sql.Timestamp;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Fuxi on 2017/5/2.
@@ -116,4 +115,10 @@ public class LightService {
         }
         return list;
     }
+    public void addWishList(Wishlist wishlist){
+        Date date=new Date();
+        wishlist.setStoreDate(new Timestamp(date.getTime()));
+        lightDAO.addWishList(wishlist);
+    }
+
 }

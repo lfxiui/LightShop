@@ -47,8 +47,9 @@ public class PageController {
            session.setAttribute("BrandSelect",BrandSelect);
            String flag="";
            session.setAttribute("flag",flag);
+           session.setAttribute("elights",pageService.getPageEndSales());
        }
-//        mv.addObject("elights",pageService.getPageEndSales());
+
         return mv;
     }
     @RequestMapping("/page")

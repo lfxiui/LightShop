@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -22,7 +23,6 @@ public class LightController {
 
     @Autowired
     LightService lightService;
-    int userId = 1;
 
     @RequestMapping("/show")
     public String show() {
@@ -77,8 +77,8 @@ public class LightController {
 
     @RequestMapping("/addWishlist")
     @ResponseBody
-    public String addWishlist(@RequestBody Wishlist wishlist){
-        wishlist.setUserId(userId);
+    public String addWishlist(@RequestBody Wishlist wishlist,HttpSession session){
+        wishlist.setUserId((Integer) session.getAttribute("userId"));
         lightService.addWishList(wishlist);
         return "success";
     }

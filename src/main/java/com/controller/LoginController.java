@@ -56,6 +56,7 @@ public class LoginController {
             session.setAttribute("Stuffs", pageService.getStuffs());
             session.setAttribute("map",new HashMap());
             session.setAttribute("BrandSelect",BrandSelect);
+            session.setAttribute("elights",pageService.getPageEndSales());
             String flag="";
             session.setAttribute("flag",flag);
             if(user.getUserRoleId()==1)
@@ -63,5 +64,10 @@ public class LoginController {
             else  mv.setViewName("index");
         }
         return mv;
+    }
+    @RequestMapping("/out")
+    public String out(HttpSession session){
+        session.removeAttribute("userId");
+        return "login";
     }
 }

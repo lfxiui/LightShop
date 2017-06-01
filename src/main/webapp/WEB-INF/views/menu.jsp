@@ -27,7 +27,7 @@
                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/ordersManager/orderStates" >订单状态管理</a></li>
             </ul>
         </li>
-        <li><a href="#">首页设置</a></li>
+        <li><a href="/page">首页设置</a></li>
     </ul>
 </div>
 </body>

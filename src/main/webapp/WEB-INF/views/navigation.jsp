@@ -140,7 +140,7 @@
             <ul class="link">
                 <li><a href="${pageContext.request.contextPath}/order/getMyOrders?state=0"><span class="fa fa-shopping-basket" aria-hidden="true"></span>订单</a></li>
                 <li><a href="${pageContext.request.contextPath}/myshopcart/showMyShopCart"><span class="fa fa-shopping-bag" aria-hidden="true"></span>购物车</a></li>
-                <li><a href="#"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>收藏夹</a></li>
+                <li><a href="${pageContext.request.contextPath}/Wishlist/WishlistInfo"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>收藏夹</a></li>
                 <li><a href="${pageContext.request.contextPath}/user/info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>我的信息</a></li>
             </ul>
         </div>
