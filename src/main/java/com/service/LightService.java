@@ -1,15 +1,17 @@
 package com.service;
 
 import com.dao.LightDAO;
-import com.entity.Light;
-import com.entity.Wishlist;
+import com.entity.*;
+import com.tools.ColorUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.sql.Timestamp;
-import java.util.Date;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Fuxi on 2017/5/2.
@@ -59,18 +61,59 @@ public class LightService {
             light.setImage3(path);
         this.updateLight(light);
     }
-    //加入收藏夹
-    public void addWishList(Wishlist wishlist){
-        if (lightDAO.checkWishlist(wishlist.getUserId(),wishlist.getLightId()) == null){
-            Date date = new Date();
-            Timestamp ts = new Timestamp(date.getTime());
-            wishlist.setStoreDate(ts);
-            lightDAO.addWishList(wishlist);
-            //update light
-            Light light = lightDAO.getLightById(wishlist.getLightId());
-            light.setStore(light.getStore() + 1);
-            this.updateLight(light);
+    public List<Map> getBrandsMap(List<Brand> brands){
+        List list=new ArrayList();
+        for(Brand brand:brands){
+            HashMap map=new HashMap();
+            map.put("value",lightDAO.getBrandSale(brand.getBrandId()));
+            map.put("label",brand.getBrandName());
+            map.put("color", ColorUtil.ranColor());
+            list.add(map);
         }
-
+        return list;
+    }
+    public List<Map> getCatagoryMap(List<Catagory> catagories){
+        List list=new ArrayList();
+        for(Catagory catagory:catagories){
+            HashMap map=new HashMap();
+            map.put("value",lightDAO.getCatagorySale(catagory.getCatagoryId()));
+            map.put("label",catagory.getCatagoryName());
+            map.put("color", ColorUtil.ranColor());
+            list.add(map);
+        }
+        return list;
+    }
+    public List<Map> getStyleMap(List<Style> styles){
+        List list=new ArrayList();
+        for(Style style:styles){
+            HashMap map=new HashMap();
+            map.put("value",lightDAO.getStyleSale(style.getStyleId()));
+            map.put("label",style.getStyleName());
+            map.put("color", ColorUtil.ranColor());
+            list.add(map);
+        }
+        return list;
+    }
+    public List<Map> getSutffMap(List<Stuff> stuffs){
+        List list=new ArrayList();
+        for(Stuff stuff:stuffs){
+            HashMap map=new HashMap();
+            map.put("value",lightDAO.getCatagorySale(stuff.getStuffId()));
+            map.put("label",stuff.getStuffName());
+            map.put("color", ColorUtil.ranColor());
+            list.add(map);
+        }
+        return list;
+    }
+    public List<Map> getLocateMap(List<Locate> locates){
+        List list=new ArrayList();
+        for(Locate locate:locates){
+            HashMap map=new HashMap();
+            map.put("value",lightDAO.getLocateSale(locate.getLocateId()));
+            map.put("label",locate.getName());
+            map.put("color", ColorUtil.ranColor());
+            list.add(map);
+        }
+        return list;
     }
 }
