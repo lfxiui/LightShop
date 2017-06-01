@@ -231,11 +231,30 @@
                                 }
                             }
                         });
-                    })
+                    });
 
                     $('.w3ls-count').on('click', function() {
                         window.location.href = "${pageContext.servletContext.contextPath}/myshopcart/showMyShopCart";
-                    })
+                    });
+
+                    $('.w3ls-wishlist').on('click', function() {
+                        var wishlist = {};
+                        wishlist['lightId'] = ${light.lightId};
+                        $.ajax({
+                            type: 'post',
+                            url: '${pageContext.servletContext.contextPath}/light/addWishlist',
+                            data: JSON.stringify(wishlist),
+                            contentType: 'application/json',
+                            success: function(data) {
+                                alert("收藏成功");
+                            },
+                            error: function () {
+                                alert("收藏失败");
+                            },
+                            complete: function () {
+                            }
+                        });
+                    });
                 </script>
                 <!--加入购物车add to myshopcart-->
             </div>

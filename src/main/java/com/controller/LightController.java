@@ -1,7 +1,7 @@
 package com.controller;
 
 import com.entity.Light;
-import com.entity.Style;
+import com.entity.Wishlist;
 import com.service.LightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.xml.transform.Source;
 import java.util.List;
 
 /**
@@ -23,6 +22,7 @@ public class LightController {
 
     @Autowired
     LightService lightService;
+    int userId = 1;
 
     @RequestMapping("/show")
     public String show() {
@@ -41,9 +41,10 @@ public class LightController {
     public String getLightById(Model model,int lightId)
     {
         Light light = lightService.getLightById(lightId);
+        light.setClick(light.getClick() + 1);
+        lightService.updateLight(light);
         model.addAttribute("light",light);
         model.addAttribute("comments",light.getCommentsByLightId());
-        System.out.println(light.getImage1());
         return "light";
     }
 
@@ -72,5 +73,13 @@ public class LightController {
     @RequestMapping("/lightA")
     public String lightA(){
         return "lightA";
+    }
+
+    @RequestMapping("/addWishlist")
+    @ResponseBody
+    public String addWishlist(@RequestBody Wishlist wishlist){
+        wishlist.setUserId(userId);
+        lightService.addWishList(wishlist);
+        return "success";
     }
 }

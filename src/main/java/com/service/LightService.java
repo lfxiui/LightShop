@@ -2,10 +2,13 @@ package com.service;
 
 import com.dao.LightDAO;
 import com.entity.Light;
+import com.entity.Wishlist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -55,5 +58,19 @@ public class LightService {
         else if(imageNumber==3)
             light.setImage3(path);
         this.updateLight(light);
+    }
+    //加入收藏夹
+    public void addWishList(Wishlist wishlist){
+        if (lightDAO.checkWishlist(wishlist.getUserId(),wishlist.getLightId()) == null){
+            Date date = new Date();
+            Timestamp ts = new Timestamp(date.getTime());
+            wishlist.setStoreDate(ts);
+            lightDAO.addWishList(wishlist);
+            //update light
+            Light light = lightDAO.getLightById(wishlist.getLightId());
+            light.setStore(light.getStore() + 1);
+            this.updateLight(light);
+        }
+
     }
 }
