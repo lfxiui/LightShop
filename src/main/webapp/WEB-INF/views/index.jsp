@@ -97,9 +97,9 @@
                     <img src="${pageContext.request.contextPath}/${light.image1}" alt="">
                     <div class="arrival-info">
                         <h4>${light.name}</h4>
-                        <p>Rs ${light.price}</p>
+                        <p>￥${light.price*light.discount}</p>
                         <span class="item_price"></span>
-                        <span class="disc">[12% off]</span>
+                        <span class="disc">[${100-light.discount*100}% off]</span>
                     </div>
                     <div class="viw">
                         <a href="${pageContext.request.contextPath}/light/lightInfo?lightId=${light.lightId}" target="_blank"><span class="glyphicon glyphicon-eye-open" aria-hidden="true">view</span></a>

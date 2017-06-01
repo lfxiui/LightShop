@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.service.LightService;
+import com.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,10 +21,12 @@ import java.io.*;
 
 public class FileController {
     private final LightService lightService;
+    private final PageService pageService;
 
     @Autowired
-    public FileController(LightService lightService) {
+    public FileController(LightService lightService, PageService pageService) {
         this.lightService = lightService;
+        this.pageService = pageService;
     }
 
     @RequestMapping("/fileUpload")
@@ -58,6 +61,35 @@ public class FileController {
                 fos.close();
                 in.close();
                 lightService.updatePhoto(imageNumber,lightId,"images/"+fileName);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return "{}";
+    }
+    @RequestMapping("/fileUpload1")
+    @ResponseBody
+    public String fileUpload1(@RequestParam("file")CommonsMultipartFile file,Integer imgNumber,HttpSession session){
+        String fileName=file.getOriginalFilename();
+        System.out.println(imgNumber);
+        ServletContext sc=session.getServletContext();
+        String path=sc.getRealPath("images")+"/";
+        File f=new File(path);
+        if(!f.exists())
+            f.mkdir();
+        if(!file.isEmpty()){
+            try {
+                FileOutputStream fos=new FileOutputStream(path+fileName);
+                InputStream in=file.getInputStream();
+                int b=0;
+                while ((b=in.read())!=-1){
+                    fos.write(b);
+                }
+                fos.close();
+                in.close();
+                pageService.updatePagePhoto(imgNumber,"images/"+fileName);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {

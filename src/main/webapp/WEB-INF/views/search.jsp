@@ -122,10 +122,10 @@
             <div class="product-info simpleCart_shelfItem">
                 <div class="product-info-cust prt_name">
                     <h4>${light.name}</h4>
-                    <span class="item_price">${light.price}</span>
+                    <span class="item_price">${light.price*light.discount}￥</span>
                     <div class="ofr">
-                        <p class="pric1"><del>${light.price}</del></p>
-                        <p class="disc">[12% Off]</p>
+                        <p class="pric1"><del>￥${light.price}</del></p>
+                        <p class="disc">[${100-light.discount*100}% Off]</p>
                     </div>
                     <input type="text" class="item_quantity" value="1"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"/>
                     <input type="button" class="item_add items" value="加入购物车" name="${light.lightId}">

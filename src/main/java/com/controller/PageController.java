@@ -1,10 +1,13 @@
 package com.controller;
 
 import com.entity.Brand;
+import com.entity.Page;
+import com.service.LightService;
 import com.service.PageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
@@ -17,10 +20,11 @@ import java.util.List;
 @Controller
 public class PageController {
     private final PageService pageService;
-
+    private final LightService lightService;
     @Autowired
-    public PageController(PageService pageService) {
+    public PageController(PageService pageService, LightService lightService) {
         this.pageService = pageService;
+        this.lightService = lightService;
     }
 
     @RequestMapping("/index")
@@ -46,5 +50,26 @@ public class PageController {
        }
 //        mv.addObject("elights",pageService.getPageEndSales());
         return mv;
+    }
+    @RequestMapping("/page")
+    public String page(){
+        return "page";
+    }
+    @RequestMapping("/page/submit")
+    public String submit(Page page){
+        pageService.updatePage(page);
+        return "page";
+    }
+    @RequestMapping("/page/submit1")
+    public String submit1(Page page){
+        pageService.updatePage1(page);
+        return "page";
+    }
+    @RequestMapping("/page/getLight")
+    @ResponseBody
+    public String getLight(Integer lightId){
+        if(lightService.getLightById(lightId)==null)
+            return "no";
+        else  return "yes";
     }
 }

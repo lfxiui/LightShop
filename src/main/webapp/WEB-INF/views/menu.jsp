@@ -10,7 +10,7 @@
 <body>
 <div class="col-sm-3 col-md-2 sidebar">
     <ul class="nav nav-sidebar">
-        <li><a href="">销售分析</a></li>
+        <li><a href="${pageContext.request.contextPath}/statistic/show">销售分析</a></li>
         <li ><a href="${pageContext.request.contextPath}/light/lightA">商品管理</a></li>
         <li><a href="#demo" aria-expanded="false"  aria-controls="demo" data-toggle="collapse"  >类目管理<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
             <ul class="list-group collapse" id="demo" style="margin-left: 30px">
@@ -27,8 +27,7 @@
                 <li class="list-group-item"><a href="${pageContext.request.contextPath}/ordersManager/orderStates" >订单状态管理</a></li>
             </ul>
         </li>
-        <li><a href="" >用户管理</a></li>
-
+        <li><a href="#">首页设置</a></li>
     </ul>
 </div>
 </body>

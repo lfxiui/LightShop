@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -18,11 +19,11 @@ import java.util.List;
 public class MyShopCartConctroller {
     @Autowired
     MyShopCartService myShopCartService;
-    int userId = 1;
 
     //获得购物车信息
     @RequestMapping("/showMyShopCart")
-    public String getMyShopCartById(Model model){
+    public String getMyShopCartById(Model model, HttpSession session){
+       Integer userId = (Integer) session.getAttribute("userId");
         model.addAttribute("myShopCart",myShopCartService.getMyShopCartById(userId));
         return "myShopCart";
     }
@@ -30,12 +31,13 @@ public class MyShopCartConctroller {
     //加入购物车
     @RequestMapping("/addToCart")
     @ResponseBody
-    public String addLight(int lightId,int quantity){
-        return this.addLightToCart(lightId,quantity);
+    public String addLight(int lightId,int quantity,HttpSession session){
+        Integer userId= (Integer) session.getAttribute("userId");
+        return this.addLightToCart(userId,lightId,quantity);
     }
 
     //加入购物车的方法
-    public String addLightToCart(int lightId,int quantity){
+    public String addLightToCart(int lightId,int quantity,Integer userId){
         int quantity2 = myShopCartService.getQuantity(lightId);
         if(quantity <= quantity2){
             myShopCartService.addLight(userId,lightId,quantity);
@@ -54,20 +56,23 @@ public class MyShopCartConctroller {
     //修改数量
     @RequestMapping("/changeQuantity")
     @ResponseBody
-    public String updateQuantity(int lightId,int quantity1,int quantity2){
-        return this.addLightToCart(lightId,quantity1-quantity2);
+    public String updateQuantity(int lightId,int quantity1,int quantity2,HttpSession session){
+        Integer userId= (Integer) session.getAttribute("userId");
+        return this.addLightToCart(lightId,quantity1-quantity2,userId);
     }
 
     //删除商品
     @RequestMapping("/deleteLightFromCart")
     @ResponseBody
-    public String deleteLightById(int lightId){
+    public String deleteLightById(int lightId,HttpSession session){
+        Integer userId= (Integer) session.getAttribute("userId");
         myShopCartService.deleteLightById(userId,lightId);
         return "success";
     }
     @RequestMapping("/getCartList")
     @ResponseBody
-    public List<Myshopcart> getCartList(){
+    public List<Myshopcart> getCartList(HttpSession session){
+        Integer userId= (Integer) session.getAttribute("userId");
         return myShopCartService.getMyShopCartById(userId);
     }
 }

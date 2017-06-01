@@ -67,4 +67,30 @@ public class PageService {
     public List<Catagory> getCatagorys(){
         return pageDao.getCatagorys();
     }
+    public void updatePagePhoto(Integer imgNumber,String filename){
+        Page page=this.getPage();
+        if(imgNumber==1)
+            page.setCarouselImg1(filename);
+        if(imgNumber==2)
+            page.setCarouselImg2(filename);
+        if(imgNumber==3)
+            page.setCarouselImg3(filename);
+        pageDao.updatePage(page);
+    }
+    public void updatePage(Page page){
+        Page page1=this.getPage();
+        page.setEndSale1(page1.getEndSale1());
+        page.setEndSale2(page1.getEndSale2());
+        page.setCarouselImg3(page1.getCarouselImg3());
+        page.setCarouselImg2(page1.getCarouselImg2());
+        page.setCarouselImg3(page1.getCarouselImg3());
+        page.setId(1);
+        pageDao.updatePage(page);
+    }
+    public void updatePage1(Page page){
+        Page page1=this.getPage();
+        page1.setEndSale1(page.getEndSale1());
+        page1.setEndSale1(page.getEndSale2());
+        pageDao.updatePage(page);
+    }
 }
