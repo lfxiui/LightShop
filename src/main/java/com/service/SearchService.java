@@ -24,8 +24,8 @@ public class SearchService {
     public SearchService(SearchDao searchDao) {
         this.searchDao = searchDao;
     }
-    public PageMessage getLightsByAll(HashMap map, List<Integer> checkbox,int everyPage,int currentPage,String flag){
-        return searchDao.getLightsByAll(map,checkbox,everyPage,currentPage,flag);
+    public PageMessage getLightsByAll(HashMap map, List<Integer> checkbox,int everyPage,int currentPage,String flag,Integer sort){
+        return searchDao.getLightsByAll(map,checkbox,everyPage,currentPage,flag,sort);
     }
     public PageMessage getLightsByFrom(HashMap map,String flag,Integer[]checkbox,int everyPage,int currentPage){
         return  searchDao.getLightsByForm(map,flag,checkbox,everyPage,currentPage);

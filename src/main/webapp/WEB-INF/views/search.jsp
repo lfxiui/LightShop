@@ -111,7 +111,7 @@
             <a href="${pageContext.request.contextPath}/light/lightInfo?lightId=${light.lightId}" target="_blank">
                 <div class="more-product"><span> </span></div>
                 <div class="product-img b-link-stripe b-animate-go  thickbox">
-                    <img src="/${light.image1}" class="img-responsive" alt="">
+                    <img src="/${light.image1}"  alt="" height="250" width="190">
                     <div class="b-wrapper">
                         <h4 class="b-animate b-from-left  b-delay03">
                             <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="false"></span>查看详情</button>

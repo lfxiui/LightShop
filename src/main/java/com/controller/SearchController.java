@@ -34,7 +34,7 @@ public class SearchController {
     @RequestMapping("")
     public ModelAndView search(){
         ModelAndView mv=new ModelAndView();
-        PageMessage pageMessage=searchService.getLights(2,1);
+        PageMessage pageMessage=searchService.getLights(6,1);
         mv.addObject("results",pageMessage.getList());
         pageMessage.setList(null);
         mv.addObject("pageMessage",pageMessage);
@@ -44,6 +44,7 @@ public class SearchController {
     @RequestMapping("/all")
     public ModelAndView searchAll(String operate, String name, Integer id,Integer page, HttpSession session){
         ModelAndView mv=new ModelAndView();
+        Integer sort= (Integer) session.getAttribute("sort");
         String flag="";
         if(page!=null)
             flag=(String)session.getAttribute("flag");
@@ -64,7 +65,7 @@ public class SearchController {
        else if(operate.equals("add")){
            map.put(name,id);
        }
-       PageMessage pageMessage=searchService.getLightsByAll(map,checkbox,2,page,flag);
+       PageMessage pageMessage=searchService.getLightsByAll(map,checkbox,6,page,flag,sort);
        mv.addObject("results",pageMessage.getList());
        pageMessage.setList(null);
        mv.addObject("pageMessage",pageMessage);
@@ -76,7 +77,7 @@ public class SearchController {
         ModelAndView mv=new ModelAndView();
         session.setAttribute("flag",flag);
         HashMap map=(HashMap) session.getAttribute("map");
-        PageMessage pageMessage=searchService.getLightsByFrom(map,flag,checkbox,2,1);
+        PageMessage pageMessage=searchService.getLightsByFrom(map,flag,checkbox,6,1);
         mv.addObject("results",pageMessage.getList());
         pageMessage.setList(null);
         mv.addObject("pageMessage",pageMessage);
@@ -96,7 +97,7 @@ public class SearchController {
     @RequestMapping("/type")
     public ModelAndView type(String name,Integer id){
         ModelAndView mv=new ModelAndView();
-        PageMessage pageMessage=searchService.getLightsByType(name,id,2,1);
+        PageMessage pageMessage=searchService.getLightsByType(name,id,6,1);
         mv.addObject("results",pageMessage.getList());
         pageMessage.setList(null);
         mv.addObject("pageMessage",pageMessage);
@@ -106,6 +107,7 @@ public class SearchController {
     @RequestMapping("/sort")
     public ModelAndView sort(HttpSession session,Integer sort){
         ModelAndView mv=new ModelAndView();
+        session.setAttribute("sort",sort);
         mv.setViewName("search");
         HashMap map=(HashMap) session.getAttribute("map");
         HashMap<Integer,Integer> BrandSelect= (HashMap<Integer,Integer>) session.getAttribute("BrandSelect");
@@ -117,20 +119,20 @@ public class SearchController {
         }
         PageMessage pageMessage;
         if(sort==1)
-        { pageMessage=searchService.getLightBySort1(map,checkbox,(String) session.getAttribute("flag"),2,1);
+        { pageMessage=searchService.getLightBySort1(map,checkbox,(String) session.getAttribute("flag"),6,1);
            mv.addObject("results",pageMessage.getList());
            pageMessage.setList(null);
            mv.addObject("pageMessage",pageMessage);
         }
         if(sort==2){
-            pageMessage=searchService.getLightBySort2(map,checkbox,(String) session.getAttribute("flag"),2,1);
+            pageMessage=searchService.getLightBySort2(map,checkbox,(String) session.getAttribute("flag"),6,1);
             mv.addObject("results",pageMessage.getList());
             pageMessage.setList(null);
             mv.addObject("pageMessage",pageMessage);
         }
 
         if(sort==3){
-            pageMessage=searchService.getLightBySort3(map,checkbox,(String) session.getAttribute("flag"),2,1);
+            pageMessage=searchService.getLightBySort3(map,checkbox,(String) session.getAttribute("flag"),6,1);
             mv.addObject("results",pageMessage.getList());
             pageMessage.setList(null);
             mv.addObject("pageMessage",pageMessage);
@@ -138,7 +140,7 @@ public class SearchController {
 
         if(sort==4)
         {
-            pageMessage=searchService.getLightBySort4(map,checkbox,(String) session.getAttribute("flag"),2,1);
+            pageMessage=searchService.getLightBySort4(map,checkbox,(String) session.getAttribute("flag"),6,1);
             mv.addObject("results",pageMessage.getList());
             pageMessage.setList(null);
             mv.addObject("pageMessage",pageMessage);

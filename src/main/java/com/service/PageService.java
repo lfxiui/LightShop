@@ -90,7 +90,7 @@ public class PageService {
     public void updatePage1(Page page){
         Page page1=pageDao.getPage();
         page1.setEndSale1(page.getEndSale1());
-        page1.setEndSale1(page.getEndSale2());
-        pageDao.updatePage(page);
+        page1.setEndSale2(page.getEndSale2());
+        pageDao.updatePage(page1);
     }
 }

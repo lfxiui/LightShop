@@ -41,7 +41,7 @@ public class SearchDao {
 
     }
 
-    public PageMessage getLightsByAll(HashMap map, List<Integer> checkbox,int everyPage,int currentPage,String flag) {
+    public PageMessage getLightsByAll(HashMap map, List<Integer> checkbox,int everyPage,int currentPage,String flag,Integer sort) {
         Criteria criteria = this.getSession().createCriteria(Light.class);
         criteria.add(Restrictions.or(Restrictions.like("name", flag, MatchMode.ANYWHERE), Restrictions.like("description", flag, MatchMode.ANYWHERE)));
         if (checkbox.size() > 0)
@@ -50,6 +50,14 @@ public class SearchDao {
         criteria.setProjection(Projections.rowCount());
         int totalCount = Integer.valueOf(criteria.uniqueResult().toString());
         criteria.setProjection(null);
+        if(sort==1)
+            criteria.addOrder(Order.asc("price"));
+        if(sort==2)
+            criteria.addOrder(Order.desc("price"));
+        if(sort==3)
+            criteria.addOrder(Order.desc("sale"));
+        if(sort==4)
+            criteria.addOrder(Order.desc("store"));
         criteria.setFirstResult((everyPage) * (currentPage - 1));
         criteria.setMaxResults(everyPage);
       return   PageUtil.createPage(everyPage, totalCount, currentPage, criteria.list());
@@ -87,10 +95,10 @@ public class SearchDao {
         if (checkbox.size() > 0)
             criteria.add(Restrictions.in("brandId", checkbox));
         criteria.add(Restrictions.allEq(map));
-        criteria.addOrder(Order.asc("price"));
         criteria.setProjection(Projections.rowCount());
         int totalCount = Integer.valueOf(criteria.uniqueResult().toString());
         criteria.setProjection(null);
+        criteria.addOrder(Order.asc("price"));
         criteria.setFirstResult((everyPage) * (currentPage - 1));
         criteria.setMaxResults(everyPage);
         return   PageUtil.createPage(everyPage, totalCount, currentPage, criteria.list());
@@ -101,10 +109,10 @@ public class SearchDao {
         if (checkbox.size() > 0)
             criteria.add(Restrictions.in("brandId", checkbox));
         criteria.add(Restrictions.allEq(map));
-     criteria.addOrder(Order.desc("price"));
         criteria.setProjection(Projections.rowCount());
         int totalCount = Integer.valueOf(criteria.uniqueResult().toString());
         criteria.setProjection(null);
+        criteria.addOrder(Order.desc("price"));
         criteria.setFirstResult((everyPage) * (currentPage - 1));
         criteria.setMaxResults(everyPage);
         return   PageUtil.createPage(everyPage, totalCount, currentPage, criteria.list());
@@ -115,10 +123,10 @@ public class SearchDao {
         if (checkbox.size() > 0)
             criteria.add(Restrictions.in("brandId", checkbox));
         criteria.add(Restrictions.allEq(map));
-       criteria.addOrder(Order.desc("sale"));
         criteria.setProjection(Projections.rowCount());
         int totalCount = Integer.valueOf(criteria.uniqueResult().toString());
         criteria.setProjection(null);
+        criteria.addOrder(Order.desc("sale"));
         criteria.setFirstResult((everyPage) * (currentPage - 1));
         criteria.setMaxResults(everyPage);
         return   PageUtil.createPage(everyPage, totalCount, currentPage, criteria.list());
@@ -129,10 +137,10 @@ public class SearchDao {
         if (checkbox.size() > 0)
             criteria.add(Restrictions.in("brandId", checkbox));
         criteria.add(Restrictions.allEq(map));
-        criteria.addOrder(Order.desc("store"));
         criteria.setProjection(Projections.rowCount());
         int totalCount = Integer.valueOf(criteria.uniqueResult().toString());
         criteria.setProjection(null);
+        criteria.addOrder(Order.desc("store"));
         criteria.setFirstResult((everyPage) * (currentPage - 1));
         criteria.setMaxResults(everyPage);
         return   PageUtil.createPage(everyPage, totalCount, currentPage, criteria.list());
