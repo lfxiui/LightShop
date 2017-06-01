@@ -1,14 +1,14 @@
 <%--
   Created by IntelliJ IDEA.
   User: Fuxi
-  Date: 2017/5/28
-  Time: 15:25
+  Date: 2017/5/31
+  Time: 22:49
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>订单状态管理</title>
+    <title>风格管理</title>
     <script src="${pageContext.request.contextPath}/js/jquery-1.11.0.min.js"></script>
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
@@ -24,14 +24,14 @@
         $(function(){
             $(function () {
                 $('#table').bootstrapTable({
-                    idField: 'id',
-                    url: '${pageContext.servletContext.contextPath}/ordersManager/orderstatesList?randID='+Math.random(),
+                    idField: 'styleId',
+                    url: '${pageContext.servletContext.contextPath}/style/styleList?randID='+Math.random(),
                     columns: [{
-                        field: 'id',
+                        field: 'styleId',
                         title: 'ID'
                     }, {
-                        field: 'name',
-                        title: '名称',
+                        field: 'styleName',
+                        title: '风格名称',
                         editable: {
                             type: 'text',
                             title: '名称',
@@ -46,14 +46,18 @@
                         events: 'actionEvents'
                     }],
                     onEditableSave: function (field, row, oldValue, $el) {
-                        var orderStates = row;
+                        var style = row;
                         $.ajax({
                             type: 'post',
-                            url: '${pageContext.servletContext.contextPath}/ordersManager/updateOrderStates',
-                            data: JSON.stringify(orderStates),
+                            url: '${pageContext.servletContext.contextPath}/style/updateStyle',
+                            data: JSON.stringify(style),
                             contentType: 'application/json',
                             success: function(data) {
-                                alert('修改成功');
+                                if(data == "success"){
+                                    alert("修改成功");
+                                }else {
+                                    alert("修改失败");
+                                }
                             },
                             error: function () {
                                 alert('修改失败');
@@ -81,15 +85,20 @@
 
         window.actionEvents = {
             'click .remove': function (e, value, row, index) {
-                var orderStates = row;
+                var style = row;
                 $.ajax({
                     type: 'post',
-                    url: '${pageContext.servletContext.contextPath}/ordersManager/deleteOrderStates',
-                    data: JSON.stringify(orderStates),
+                    url: '${pageContext.servletContext.contextPath}/style/deleteStyle',
+                    data: JSON.stringify(style),
                     contentType: 'application/json',
                     success: function(data) {
-                        alert('删除成功');
-                        $("#table").bootstrapTable('removeByUniqueId',row.id);
+                        if(data == "success"){
+                            alert('删除成功');
+                            $("#table").bootstrapTable('removeByUniqueId',row.styleId);
+                        }else {
+                            alert("删除失败");
+                        }
+
                     },
                     error: function () {
                         alert('删除失败');
@@ -104,10 +113,10 @@
         function detailFormatter(index, row) {
             var html = [];
             $.each(row, function (key, value) {
-                if (key=="id")
+                if (key=="styleId")
                     key = "ID";
-                if (key=="name")
-                    key = "名称";
+                if (key=="styleName")
+                    key = "风格名称";
                 html.push('<p><b>' + key + ':</b> ' + value + '</p>');
             });
             return html.join('');
@@ -121,14 +130,14 @@
         <jsp:include page="menu.jsp"/>
         <div class="col-sm-9 col-md-10 col-sm-offset-3 col-md-offset-2 main">
             <div class="panel panel-default">
-                <div class="panel-heading">订单状态管理</div>
+                <div class="panel-heading">风格管理</div>
                 <div class="panel-body">
                     <div id="toolbar" class="btn-group">
-                        <button type="button" class="btn  btn-info" data-toggle="modal" data-target="#myModal">添加状态</button>
+                        <button type="button" class="btn  btn-info" data-toggle="modal" data-target="#myModal">添加风格</button>
                     </div>
                     <table data-search="true"
                            data-show-columns="true" data-show-toggle="true" data-show-refresh="true" data-pagination="true" data-detail-view="true"
-                           data-toolbar="#toolbar"  data-detail-formatter="detailFormatter" data-cache="false" id="table" data-unique-id="id">
+                           data-toolbar="#toolbar"  data-detail-formatter="detailFormatter" data-cache="false" id="table" data-unique-id="styleId">
                     </table>
                 </div>
             </div>
@@ -144,14 +153,14 @@
                         aria-hidden="true">×
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    订单详情
+                    填写风格信息
                 </h4>
             </div>
             <div class="modal-body" id="div1">
-                <form class="form-horizontal" role="form" id="form" action="${pageContext.servletContext.contextPath}/ordersManager/addOrderStates" method="post">
+                <form class="form-horizontal" role="form" id="form" action="${pageContext.servletContext.contextPath}/style/addStyle" method="post">
                     <div class="form-group">
-                        <label for="name">名称</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="请输入名称">
+                        <label for="name">风格名称</label>
+                        <input type="text" class="form-control" id="name" name="styleName" placeholder="请输入风格名称">
                     </div>
                 </form>
             </div>

@@ -17,6 +17,7 @@ public class Catagory {
 
     @Id
     @Column(name = "CatagoryId", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getCatagoryId() {
         return catagoryId;
     }

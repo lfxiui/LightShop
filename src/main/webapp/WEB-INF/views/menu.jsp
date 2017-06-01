@@ -14,11 +14,11 @@
         <li ><a href="${pageContext.request.contextPath}/light/lightA">商品管理</a></li>
         <li><a href="#demo" aria-expanded="false"  aria-controls="demo" data-toggle="collapse"  >类目管理<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
             <ul class="list-group collapse" id="demo" style="margin-left: 30px">
-                <li class="list-group-item"><a href="" >风格</a></li>
-                <li class="list-group-item"><a href="" >材质</a></li>
-                <li class="list-group-item"><a href="" >品牌</a></li>
-                <li class="list-group-item"><a href="" >适用空间</a></li>
-                <li class="list-group-item"><a href="" >光源类型</a></li>
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/style/show" >风格</a></li>
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/stuff/show" >材质</a></li>
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/brand/show" >品牌</a></li>
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/locate/show" >适用空间</a></li>
+                <li class="list-group-item"><a href="${pageContext.request.contextPath}/catagory/show" >光源类型</a></li>
             </ul>
         </li>
         <li><a href="#demo2" aria-expanded="false"  aria-controls="demo" data-toggle="collapse"  >订单管理<span class="pull-right glyphicon glyphicon-chevron-down"></span></a>
