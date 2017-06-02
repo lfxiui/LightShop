@@ -41,7 +41,8 @@ public class OrderDAO {
     //订单中的商品
     public void addOrderLight(String orderId, int myShopCartId){
         Orderlight orderlight = new Orderlight();
-        Myshopcart myshopcart = (Myshopcart) this.getSession().createQuery("from Myshopcart where shopCartId=?").setParameter(0,myShopCartId).uniqueResult();
+        System.out.println("购物车"+myShopCartId);
+        Myshopcart myshopcart = (Myshopcart) this.getSession().createQuery("from Myshopcart where shopCartId=:shopcardID").setParameter("shopcardID",myShopCartId).uniqueResult();
         orderlight.setQuantity(myshopcart.getQuantiy());
         orderlight.setLightId(myshopcart.getLightId());
         orderlight.setOrderId(orderId);

@@ -44,7 +44,10 @@ public class SearchController {
     @RequestMapping("/all")
     public ModelAndView searchAll(String operate, String name, Integer id,Integer page, HttpSession session){
         ModelAndView mv=new ModelAndView();
-        Integer sort= (Integer) session.getAttribute("sort");
+        Integer sort;
+        if(session.getAttribute("sort")!=null)
+            sort= (Integer) session.getAttribute("sort");
+        else sort=0;
         String flag="";
         if(page!=null)
             flag=(String)session.getAttribute("flag");
