@@ -77,6 +77,10 @@
                         title:"品牌",
                         source:Brands
                     }
+                },{
+                    field:'brandByBrandId.brandName',
+                    title:'品牌',
+                    visible:false
                 },
                 {
                     field:'styleId',
@@ -86,7 +90,9 @@
                         title:"风格",
                         source:Styles
                     }
-                },
+                },{ field:'styleByStyleId.styleName',
+                    title:'风格',
+                    visible:false},
                 {
                     field:'stuffId',
                     title:'材质',
@@ -95,7 +101,9 @@
                         title:"材质",
                         source:Stuffs
                     }
-                },
+                },{field:'stuffByStuffId.stuffName',
+                    title:'材质',
+                    visible:false},
                 {
                     field:'catagoryId',
                     title:'光源类型',  editable:{
@@ -103,7 +111,9 @@
                     title:"光源类型",
                     source:Catagorys
                 }
-                },
+                },{field:'catagoryByCatagoryId.catagoryName',
+                    title:'光源类型',
+                visible:false},
                 {
                     field:'locateId',
                     title:'安放位置',
@@ -112,7 +122,9 @@
                         title:"安放位置",
                         source:Locates
                     }
-                },
+                },{field:'locateByLocateId.name',
+                    title:'安放位置',
+                visible:false},
                 {
                     field:'description',
                     title:'详情描述',
@@ -243,6 +255,7 @@
                    data-cache="false"
                    data-pagination="true"
                    data-show-columns="true"
+                   data-show-refresh="true"
                    data-unique-id="lightId">
             </table>
         </div>

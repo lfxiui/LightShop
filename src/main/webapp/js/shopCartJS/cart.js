@@ -32,6 +32,7 @@ $(document).ready(function() {
         $("#itemCount").text(itemCount).data("bind", itemCount);
         $("#qtyCount").text(qtyTotal).data("bind", qtyTotal);
         $("#priceTotal").text($.formatMoney(priceTotal, 2)).data("bind", priceTotal.toFixed(2));
+        $("#totalPrice").val(priceTotal);
     };
 
     /*
@@ -46,7 +47,6 @@ $(document).ready(function() {
             }
         });
         $("#allMoney").text("共计:"+$("#priceTotal").text()+"元");
-        $("#totalPrice").val($("#priceTotal").text());
     });
 
     var cartTable = $("#cartTable");

@@ -39,9 +39,14 @@
                     },{
                         field: 'totalPrice',
                         title: '订单总价(元)'
-                    },{
+                    }, {
+                            field: 'orderstatesByOrderStateId.name',
+                            title: '',
+                            visible:false
+                        },{
                         field: 'orderStateId',
                         title: '订单状态',
+                        sortable: true,
                         editable: {
                             type: 'select',
                             title: '订单状态',

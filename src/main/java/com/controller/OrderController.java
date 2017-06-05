@@ -47,6 +47,7 @@ public class OrderController {
     @RequestMapping("/addOrder")
     public String addOrder(@RequestParam(value = "checkbox") Integer[] checkbox, Orders orders,String s_province,String s_city,String s_county,HttpSession session){
         Integer userId= (Integer) session.getAttribute("userId");
+        System.out.println("checkbox"+checkbox.length);
         SimpleDateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
         String ordersId = df.format(new Date()) + String.valueOf(userId);
         orders.setOrdersId(ordersId);
@@ -58,7 +59,7 @@ public class OrderController {
         orders.setAddress(s_province+s_city+s_county+orders.getAddress());
         orderService.addOrder(orders);
         int n = checkbox.length;
-        if (checkbox[0] == 0) n++;
+        //if (checkbox[0] == 0) n++;
         for (int i = 0 ; i < n ; i++){
             if (checkbox[i] > 0){
                 addOrderLight(ordersId,checkbox[i]);
