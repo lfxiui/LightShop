@@ -7,16 +7,16 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<script src="/js/jquery.min.js"></script>
-<script src="/js/bootstrap.js"></script>
-<link href="/css/bootstrap.css" rel="stylesheet">
-<link href="/css/signin.css" rel="stylesheet">
+<script src="${pageContext.servletContext.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.servletContext.contextPath}/js/bootstrap.js"></script>
+<link href="${pageContext.servletContext.contextPath}/css/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.servletContext.contextPath}/css/signin.css" rel="stylesheet">
 <head>
     <title>登陆</title>
 </head>
 <body>
 <div class="container">
-    <form class="form-signin" action="/login/submit">
+    <form class="form-signin" action="${pageContext.servletContext.contextPath}/login/submit">
         <h2 class="form-signin-heading">请登录</h2>
         <h2 class="text-danger">${msg}</h2>
         <label for="inputLoginId" class="sr-only">邮箱地址</label>

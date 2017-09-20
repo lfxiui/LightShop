@@ -11,6 +11,7 @@ import java.util.Collection;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@Table(name = "user")
 @JsonIgnoreProperties({"commentsByUserId","myshopcartsByUserId","ordersByUserId","userrolesByUserRoleId","userstatesByUserStateId","wishlistsByUserId"})
 public class User {
     private Integer userId;

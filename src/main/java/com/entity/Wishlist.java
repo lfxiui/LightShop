@@ -7,6 +7,7 @@ import java.sql.Timestamp;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@Table(name = "wishlist")
 public class Wishlist {
     private Integer wishListId;
     private Integer lightId;

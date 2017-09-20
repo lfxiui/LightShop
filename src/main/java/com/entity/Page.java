@@ -9,6 +9,7 @@ import javax.persistence.*;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@Table(name = "page")
 @DynamicUpdate(true)
 @JsonIgnoreProperties({"lightByHotSale1","lightByHotSale2","lightByHotSale3","lightByHotSale4","lightByHotSale5","lightByHotSale6","lightByHotSale7","lightByHotSale8",
 "lightByEndSale1","lightByEndSale2"})

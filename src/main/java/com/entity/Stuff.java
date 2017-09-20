@@ -9,6 +9,7 @@ import java.util.Collection;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@Table(name = "stuff")
 public class Stuff {
     private Integer stuffId;
     private String stuffName;

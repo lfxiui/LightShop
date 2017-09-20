@@ -13,12 +13,12 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/bootstrap-3.1.1.min.js"></script>
-<link rel="stylesheet" href="//rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
-<link rel="stylesheet" href="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
-<script src="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
-<script src="//rawgit.com/wenzhixin/bootstrap-table/master/src/extensions/editable/bootstrap-table-editable.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-table.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-editable.css">
+<script src="${pageContext.request.contextPath}/js/bootstrap-table.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap-editable.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap-table-editable.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap-table-zh-CN.js"></script>
 
 <link href="${pageContext.request.contextPath}/css/fileinput.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/fileinput.js"></script>
@@ -220,7 +220,7 @@
             '<i class="glyphicon glyphicon-remove"></i>', '</a>' ].join('');
     }
     function footerFormatter(value,row,index){
-        return '<a target="_blank" href="/light/lightInfo?lightId= '+row.lightId+'">'+row.lightId+'</a>';
+        return '<a target="_blank" href="${pageContext.request.contextPath}/light/lightInfo?lightId= '+row.lightId+'">'+row.lightId+'</a>';
     }
     window.actionEvents = {
         'click .edit' : function(e, value, row, index) {
@@ -285,7 +285,7 @@
         function upload(row){
             $("#input-file").fileinput({
                 language:'zh',
-                uploadUrl: "/file/fileUpload", // server upload action
+                uploadUrl: "${pageContext.request.contextPath}/file/fileUpload", // server upload action
                 uploadAsync: true,
                 uploadExtraData:{'lightId':row.lightId},
                 maxFileCount: 3,

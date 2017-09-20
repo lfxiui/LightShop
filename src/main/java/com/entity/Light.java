@@ -11,6 +11,7 @@ import java.util.Collection;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@Table(name = "light")
 @DynamicUpdate
 @JsonIgnoreProperties({"commentsByLightId","myshopcartsByLightId","orderlightsByLightId","wishlistsByLightId"})
 public class Light {

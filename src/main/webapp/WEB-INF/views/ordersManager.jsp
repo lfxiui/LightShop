@@ -13,12 +13,12 @@
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/js/bootstrap-3.1.1.min.js"></script>
-    <link rel="stylesheet" href="//rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
-    <link rel="stylesheet" href="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
-    <script src="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/js/bootstrap-editable.js"></script>
-    <script src="//rawgit.com/wenzhixin/bootstrap-table/master/src/extensions/editable/bootstrap-table-editable.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-table.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-editable.css">
+    <script src="${pageContext.request.contextPath}/js/bootstrap-table.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap-editable.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap-table-editable.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap-table-zh-CN.js"></script>
     <script type="text/javascript">
         $(function(){
             $(function () {

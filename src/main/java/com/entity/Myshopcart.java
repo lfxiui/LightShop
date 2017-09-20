@@ -10,6 +10,7 @@ import java.sql.Timestamp;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@Table(name = "myshopcart")
 public class Myshopcart {
     private Integer shopCartId;
     private Integer lightId;

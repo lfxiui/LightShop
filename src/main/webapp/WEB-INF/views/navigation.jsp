@@ -27,17 +27,17 @@
                     </a>
                     <ul class="dropdown-menu cart-list">
                         <li>
-                            <a href="#" class="photo"><img src="images/thumb/thumb01.jpg" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="${pageContext.request.contextPath}/images/thumb/thumb01.jpg" class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Delica omtantur </a></h6>
                             <p>2x - <span class="price">$99.99</span></p>
                         </li>
                         <li>
-                            <a href="#" class="photo"><img src="/images/img1.jpg" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="${pageContext.request.contextPath}/images/img1.jpg" class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Omnes ocurreret</a></h6>
                             <p>1x - <span class="price">$33.33</span></p>
                         </li>
                         <li>
-                            <a href="#" class="photo"><img src="images/thumb/thumb03.jpg" class="cart-thumb" alt="" /></a>
+                            <a href="#" class="photo"><img src="${pageContext.request.contextPath}/images/thumb/thumb03.jpg" class="cart-thumb" alt="" /></a>
                             <h6><a href="#">Agam facilisis</a></h6>
                             <p>2x - <span class="price">$99.99</span></p>
                         </li>

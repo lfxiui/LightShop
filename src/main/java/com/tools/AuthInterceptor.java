@@ -13,7 +13,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
       boolean flag=true;
        if(request.getSession().getAttribute("userId")==null){
-           response.sendRedirect("/login");
+           response.sendRedirect("/LightShop/login");
            flag=false;
        }
        return flag;

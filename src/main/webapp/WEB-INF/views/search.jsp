@@ -40,15 +40,15 @@
                     cart.empty();
                     for(var i=0;i<data.length;i++){
                         cart.append('<li>'+
-                            '<a href="/light/lightInfo?lightId='+data[i].lightId+'" class="photo"><img src="/'+data[i].lightByLightId.image1+'" class="cart-thumb" alt="" /></a>'+
-                            '<h6><a href="/light/lightInfo?lightId='+data[i].lightId+'">'+data[i].lightByLightId.name +'</a></h6>'+
+                            '<a href="${pageContext.request.contextPath}/light/lightInfo?lightId='+data[i].lightId+'" class="photo"><img src="/'+data[i].lightByLightId.image1+'" class="cart-thumb" alt="" /></a>'+
+                            '<h6><a href="${pageContext.request.contextPath}/light/lightInfo?lightId='+data[i].lightId+'">'+data[i].lightByLightId.name +'</a></h6>'+
                             '<p>'+data[i].quantiy+'X<span class="price">￥'+data[i].lightByLightId.price+'</span></p>'+
                             '</li>');
                         total=total+data[i].lightByLightId.price*data[i].quantiy;
                     }
                     cart.append('<li class="total">'+
                         ' <span class="pull-right"><strong>总价</strong>: ￥'+total+'</span>'+
-                        '<a href="/myshopcart/showMyShopCart" class="btn btn-default btn-cart">购物车</a>'+
+                        '<a href="${pageContext.request.contextPath}/myshopcart/showMyShopCart" class="btn btn-default btn-cart">购物车</a>'+
                         '</li>')
 
                 }
@@ -111,7 +111,7 @@
             <a href="${pageContext.request.contextPath}/light/lightInfo?lightId=${light.lightId}" target="_blank">
                 <div class="more-product"><span> </span></div>
                 <div class="product-img b-link-stripe b-animate-go  thickbox">
-                    <img src="/${light.image1}"  alt="" height="250" width="190">
+                    <img src="${pageContext.request.contextPath}/${light.image1}"  alt="" height="250" width="190">
                     <div class="b-wrapper">
                         <h4 class="b-animate b-from-left  b-delay03">
                             <button><span class="glyphicon glyphicon-zoom-in" aria-hidden="false"></span>查看详情</button>
@@ -184,7 +184,7 @@
                     <div class="tab2">
                         <ul class="place">
                             <li class="sort">光源类型</li>
-                            <li class="by"><img src="images/do.png" alt=""></li>
+                            <li class="by"><img src="${pageContext.request.contextPath}/images/do.png" alt=""></li>
                             <div class="clearfix"> </div>
                         </ul>
                         <div class="single-bottom">
@@ -196,7 +196,7 @@
                     <div class="tab3">
                         <ul class="place">
                             <li class="sort">灯饰风格</li>
-                            <li class="by"><img src="images/do.png" alt=""></li>
+                            <li class="by"><img src="${pageContext.request.contextPath}/images/do.png" alt=""></li>
                             <div class="clearfix"> </div>
                         </ul>
                         <div class="single-bottom">
@@ -208,7 +208,7 @@
                     <div class="tab4">
                         <ul class="place">
                             <li class="sort">材质</li>
-                            <li class="by"><img src="images/do.png" alt=""></li>
+                            <li class="by"><img src="${pageContext.request.contextPath}/images/do.png" alt=""></li>
                             <div class="clearfix"> </div>
                         </ul>
                         <div class="single-bottom">

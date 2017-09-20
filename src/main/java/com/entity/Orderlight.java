@@ -8,6 +8,7 @@ import javax.persistence.*;
  * Created by AgZou on 2017/5/9.
  */
 @Entity
+@Table(name = "orderlight")
 public class Orderlight {
     private Integer id;
     private String orderId;

@@ -14,8 +14,12 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/css/dashboard.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/bootstrap-3.1.1.min.js"></script>
-<link rel="stylesheet" href="//rawgit.com/wenzhixin/bootstrap-table/master/src/bootstrap-table.css">
-<link rel="stylesheet" href="//rawgit.com/vitalets/x-editable/master/dist/bootstrap3-editable/css/bootstrap-editable.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-table.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap-editable.css">
+<script src="${pageContext.request.contextPath}/js/bootstrap-table.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap-editable.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap-table-editable.js"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap-table-zh-CN.js"></script>
 
 <link href="${pageContext.request.contextPath}/css/fileinput.css" rel="stylesheet">
 <script src="${pageContext.request.contextPath}/js/fileinput.js"></script>
@@ -29,7 +33,7 @@
         $("#carouselImg1").fileinput({
             showCaption: false,
             language:'zh',
-            uploadUrl: "/file/fileUpload1", // server upload action
+            uploadUrl: "${pageContext.request.contextPath}/file/fileUpload1", // server upload action
             uploadAsync: true,
             uploadExtraData:{'imgNumber':$("#select").val()},
             maxFileCount: 1,
@@ -40,7 +44,7 @@
     function chekclightId(a) {
 
         if($(a).val()!="")
-        $.post('/page/getLight',{'lightId':$(a).val()},function (result) {
+        $.post('${pageContext.request.contextPath}/page/getLight',{'lightId':$(a).val()},function (result) {
             if(result=="no") {
                 $(a).focus();
                 $(a).val("");
@@ -69,7 +73,7 @@
                     <input type="file" id="carouselImg1"  class="file-loading" name="file" accept="image/*">
                     </div>
                     <h3>热销商品</h3>
-                    <form class="form-horizontal" role="form" style="width: 400px" action="/page/submit">
+                    <form class="form-horizontal" role="form" style="width: 400px" action="${pageContext.request.contextPath}/page/submit">
                         <div class="form-group-sm">
                             <label for="hotSale1" class="col-xs-3 control-label">热销商品一</label>
                             <div class=" col-xs-9">
@@ -121,7 +125,7 @@
                             </div>
                         </div>
                     </form>
-                    <form class="form-horizontal" role="form" style="width: 400px" action="/page/submit1">
+                    <form class="form-horizontal" role="form" style="width: 400px" action="${pageContext.request.contextPath}/page/submit1">
                         <h3>清仓商品</h3>
                         <div class="form-group-sm">
                             <label class="col-xs-3 control-label" for="endSale1">清仓商品一</label>
