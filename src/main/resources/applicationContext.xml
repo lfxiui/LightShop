@@ -7,15 +7,15 @@
     <!--自动扫描包-->
     <context:component-scan base-package="com.dao"/>
     <context:component-scan base-package="com.service"/>
+    <context:property-placeholder location="classpath:jdbc.properties"/>
     <aop:aspectj-autoproxy/>
     <!--连接池配置-->
     <bean id="dataSource"
           class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbcUrl"
-                  value="jdbc:mysql://localhost:3306/shop?serverTimezone=GMT%2b8&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;autoReconnect=true"/>
-        <property name="user" value="root"/>
-        <property name="password" value="123456"/>
+        <property name="driverClass" value="${jdbc.driverClassName}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
         <property name="minPoolSize" value="10"/>
         <property name="maxPoolSize" value="100"/>
         <property name="maxIdleTime" value="1800"/>
@@ -27,7 +27,6 @@
         <property name="breakAfterAcquireFailure" value="true"/>
         <property name="testConnectionOnCheckout" value="false"/>
     </bean>
-
     <!--Hibernate配置-->
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
